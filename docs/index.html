@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Alpha Hub</title>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, sans-serif; max-width: 980px; margin: 24px auto; padding: 0 16px; color: #111; }
+    h1 { margin-bottom: 6px; }
+    .muted { color: #666; margin-top: 0; }
+    .grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; }
+    .card { border: 1px solid #e6e6e6; border-radius: 12px; padding: 12px; }
+    .item { padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+    .item:hover { background: #f5f5f5; }
+    .item.active { background: #111; color: #fff; }
+    pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; }
+    a { color: #2563eb; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>AI Alpha Hub</h1>
+  <p class="muted">Daily AI report archive (podcasts, videos, coding tips, workflows).</p>
+
+  <div class="grid">
+    <div class="card">
+      <strong>History</strong>
+      <div id="history" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <div id="meta" class="muted"></div>
+      <pre id="content">Loading…</pre>
+    </div>
+  </div>
+
+  <script>
+    const historyEl = document.getElementById('history');
+    const contentEl = document.getElementById('content');
+    const metaEl = document.getElementById('meta');
+
+    async function loadHistory() {
+      const res = await fetch('./history.json?ts=' + Date.now());
+      if (!res.ok) throw new Error('history not found');
+      return res.json();
+    }
+
+    async function loadReport(path) {
+      const res = await fetch(path + '?ts=' + Date.now());
+      if (!res.ok) throw new Error('report not found: ' + path);
+      return res.text();
+    }
+
+    function setActive(path) {
+      [...document.querySelectorAll('.item')].forEach(el => el.classList.toggle('active', el.dataset.path === path));
+    }
+
+    async function render() {
+      try {
+        const history = await loadHistory();
+        if (!Array.isArray(history) || history.length === 0) {
+          contentEl.textContent = 'No reports yet.';
+          return;
+        }
+
+        const params = new URLSearchParams(location.search);
+        const dateParam = params.get('date');
+        const selected = history.find(h => h.date === dateParam) || history[0];
+
+        historyEl.innerHTML = '';
+        history.forEach(entry => {
+          const row = document.createElement('div');
+          row.className = 'item' + (entry.path === selected.path ? ' active' : '');
+          row.dataset.path = entry.path;
+          row.innerHTML = `<strong>${entry.date}</strong><br><span style="font-size:12px;color:inherit">${entry.title || 'Daily AI Alpha'}</span>`;
+          row.onclick = async () => {
+            const url = new URL(location.href);
+            url.searchParams.set('date', entry.date);
+            history.replaceState({}, '', url);
+            setActive(entry.path);
+            metaEl.textContent = `${entry.date} • ${entry.title || 'Daily AI Alpha'}`;
+            contentEl.textContent = await loadReport(entry.path);
+          };
+          historyEl.appendChild(row);
+        });
+
+        metaEl.textContent = `${selected.date} • ${selected.title || 'Daily AI Alpha'}`;
+        contentEl.textContent = await loadReport(selected.path);
+      } catch (err) {
+        contentEl.textContent = 'Failed to load reports: ' + err.message;
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>
