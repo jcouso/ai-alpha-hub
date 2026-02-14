@@ -4,60 +4,533 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Alpha Hub</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    body { font-family: Inter, system-ui, -apple-system, sans-serif; max-width: 980px; margin: 24px auto; padding: 0 16px; color: #111; }
-    h1 { margin-bottom: 6px; }
-    .muted { color: #666; margin-top: 0; }
-    .grid { display: grid; grid-template-columns: 320px 1fr; gap: 20px; }
-    .card { border: 1px solid #e6e6e6; border-radius: 12px; padding: 12px; }
-    .item { padding: 8px 10px; border-radius: 8px; cursor: pointer; }
-    .item:hover { background: #f5f5f5; }
-    .item.active { background: #111; color: #fff; }
-    pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; }
-    a { color: #2563eb; text-decoration: none; }
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #141414;
+      --bg-card-hover: #1a1a1a;
+      --bg-sidebar: #111111;
+      --border: #222;
+      --border-active: #333;
+      --text: #e5e5e5;
+      --text-muted: #888;
+      --text-dim: #555;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --accent-text: #818cf8;
+      --green: #22c55e;
+      --orange: #f59e0b;
+      --red: #ef4444;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      font-size: 24px;
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-sm);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .logo span {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .header-nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-glow);
+      color: var(--accent-text);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── Layout ─── */
+    .layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: calc(100vh - 81px);
+    }
+
+    /* ─── Sidebar ─── */
+    .sidebar {
+      border-right: 1px solid var(--border);
+      padding: 20px 0;
+      overflow-y: auto;
+      position: sticky;
+      top: 81px;
+      height: calc(100vh - 81px);
+    }
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      padding: 0 20px 12px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      border-left: 3px solid transparent;
+    }
+    .nav-item:hover {
+      background: var(--bg-card-hover);
+    }
+    .nav-item.active {
+      background: var(--accent-glow);
+      border-left-color: var(--accent);
+    }
+    .nav-item .date {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .nav-item.active .date {
+      color: var(--accent-text);
+    }
+    .nav-item .subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .nav-item:not(.active) .nav-dot {
+      background: var(--border-active);
+    }
+
+    /* ─── Content ─── */
+    .content {
+      padding: 32px 40px 80px;
+      overflow-y: auto;
+    }
+    .content-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .content-date {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-text);
+    }
+    .content-title {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .content-separator {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-dim);
+    }
+
+    /* ─── Markdown styles ─── */
+    .report {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .report h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--text), var(--accent-text));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .report h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 16px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .report h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 24px 0 8px;
+      color: var(--accent-text);
+    }
+    .report p {
+      margin: 0 0 14px;
+      color: var(--text);
+    }
+    .report ul, .report ol {
+      margin: 0 0 16px;
+      padding-left: 20px;
+    }
+    .report li {
+      margin: 4px 0;
+    }
+    .report strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .report a {
+      color: var(--accent-text);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+      transition: border-color 0.15s;
+    }
+    .report a:hover {
+      border-color: var(--accent-text);
+    }
+    .report code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 2px 7px;
+      border-radius: 5px;
+      border: 1px solid #313244;
+    }
+    .report pre {
+      background: #1e1e2e;
+      border: 1px solid #313244;
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      overflow-x: auto;
+      margin: 0 0 16px;
+    }
+    .report pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .report blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 8px 16px;
+      margin: 0 0 16px;
+      background: var(--accent-glow);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--text-muted);
+    }
+    .report hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+    .report table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 0 16px;
+      font-size: 14px;
+    }
+    .report th, .report td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .report th {
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── Empty state ─── */
+    .empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+      color: var(--text-dim);
+      text-align: center;
+      gap: 12px;
+    }
+    .empty-icon { font-size: 48px; }
+    .empty-text { font-size: 16px; font-weight: 500; }
+    .empty-sub { font-size: 13px; }
+
+    /* ─── Loading ─── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+      gap: 12px;
+      color: var(--text-muted);
+    }
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── Mobile toggle ─── */
+    .mobile-toggle {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* ─── Mobile responsive ─── */
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: fixed;
+        top: 81px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: auto;
+        background: var(--bg);
+        z-index: 50;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        display: none;
+      }
+      .sidebar.open {
+        display: block;
+      }
+      .mobile-toggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .content {
+        padding: 20px 16px 80px;
+      }
+      .report h1 {
+        font-size: 22px;
+      }
+      .report h2 {
+        font-size: 18px;
+        margin-top: 28px;
+      }
+      .report h3 {
+        font-size: 15px;
+      }
+      .report {
+        font-size: 14px;
+      }
+      .content-meta {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .header {
+        padding: 16px;
+      }
+      .nav-item .subtitle {
+        max-width: 60vw;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo h1 { font-size: 16px; }
+      .logo span { display: none; }
+    }
   </style>
 </head>
 <body>
-  <h1>AI Alpha Hub</h1>
-  <p class="muted">Daily AI report archive (podcasts, videos, coding tips, workflows).</p>
 
-  <div class="grid">
-    <div class="card">
-      <strong>History</strong>
-      <div id="history" style="margin-top:8px"></div>
+  <div class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">⚡</div>
+        <div>
+          <h1>AI Alpha Hub</h1>
+          <span>Daily signals for builders</span>
+        </div>
+      </div>
+      <div class="header-nav">
+        <div class="pill" id="report-count">—</div>
+        <button class="mobile-toggle" id="menuBtn" onclick="toggleSidebar()">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+          Reports
+        </button>
+      </div>
     </div>
-    <div class="card">
-      <div id="meta" class="muted"></div>
-      <pre id="content">Loading…</pre>
-    </div>
+  </div>
+
+  <div class="layout">
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-title">Report History</div>
+      <div id="history"></div>
+    </nav>
+    <main class="content" id="main">
+      <div class="loading"><div class="spinner"></div> Loading reports…</div>
+    </main>
   </div>
 
   <script>
     const historyEl = document.getElementById('history');
-    const contentEl = document.getElementById('content');
-    const metaEl = document.getElementById('meta');
+    const mainEl = document.getElementById('main');
+    const sidebar = document.getElementById('sidebar');
+    const reportCount = document.getElementById('report-count');
+    let currentHistory = [];
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('open');
+    }
 
     async function loadHistory() {
-      const res = await fetch('./history.json?ts=' + Date.now());
+      const res = await fetch('./history.json?t=' + Date.now());
       if (!res.ok) throw new Error('history not found');
       return res.json();
     }
 
     async function loadReport(path) {
-      const res = await fetch(path + '?ts=' + Date.now());
-      if (!res.ok) throw new Error('report not found: ' + path);
+      const res = await fetch(path + '?t=' + Date.now());
+      if (!res.ok) throw new Error('report not found');
       return res.text();
     }
 
+    function formatDate(dateStr) {
+      try {
+        const [y, m, d] = dateStr.split('-').map(Number);
+        const date = new Date(y, m - 1, d);
+        const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return `${days[date.getDay()]}, ${months[date.getMonth()]} ${d}`;
+      } catch { return dateStr; }
+    }
+
     function setActive(path) {
-      [...document.querySelectorAll('.item')].forEach(el => el.classList.toggle('active', el.dataset.path === path));
+      document.querySelectorAll('.nav-item').forEach(el =>
+        el.classList.toggle('active', el.dataset.path === path)
+      );
+    }
+
+    async function selectReport(entry) {
+      const url = new URL(location.href);
+      url.searchParams.set('date', entry.date);
+      history.replaceState({}, '', url);
+      setActive(entry.path);
+      sidebar.classList.remove('open');
+
+      mainEl.innerHTML = `<div class="loading"><div class="spinner"></div> Loading…</div>`;
+
+      try {
+        const md = await loadReport(entry.path);
+        const html = marked.parse(md, { breaks: false, gfm: true });
+        mainEl.innerHTML = `
+          <div class="content-meta">
+            <span class="content-date">${formatDate(entry.date)}</span>
+            <span class="content-separator"></span>
+            <span class="content-title">${entry.title || 'AI Alpha Report'}</span>
+          </div>
+          <article class="report">${html}</article>
+        `;
+      } catch (err) {
+        mainEl.innerHTML = `<div class="empty">
+          <div class="empty-icon">😵</div>
+          <div class="empty-text">Failed to load report</div>
+          <div class="empty-sub">${err.message}</div>
+        </div>`;
+      }
     }
 
     async function render() {
       try {
         const history = await loadHistory();
+        currentHistory = history;
+        reportCount.textContent = `${history.length} report${history.length !== 1 ? 's' : ''}`;
+
         if (!Array.isArray(history) || history.length === 0) {
-          contentEl.textContent = 'No reports yet.';
+          historyEl.innerHTML = '';
+          mainEl.innerHTML = `<div class="empty">
+            <div class="empty-icon">📡</div>
+            <div class="empty-text">No reports yet</div>
+            <div class="empty-sub">First report drops at 9am BRT</div>
+          </div>`;
           return;
         }
 
@@ -66,26 +539,28 @@
         const selected = history.find(h => h.date === dateParam) || history[0];
 
         historyEl.innerHTML = '';
-        history.forEach(entry => {
+        history.forEach((entry, i) => {
           const row = document.createElement('div');
-          row.className = 'item' + (entry.path === selected.path ? ' active' : '');
+          row.className = 'nav-item' + (entry.path === selected.path ? ' active' : '');
           row.dataset.path = entry.path;
-          row.innerHTML = `<strong>${entry.date}</strong><br><span style="font-size:12px;color:inherit">${entry.title || 'Daily AI Alpha'}</span>`;
-          row.onclick = async () => {
-            const url = new URL(location.href);
-            url.searchParams.set('date', entry.date);
-            history.replaceState({}, '', url);
-            setActive(entry.path);
-            metaEl.textContent = `${entry.date} • ${entry.title || 'Daily AI Alpha'}`;
-            contentEl.textContent = await loadReport(entry.path);
-          };
+          row.innerHTML = `
+            <div class="nav-dot"></div>
+            <div>
+              <div class="date">${formatDate(entry.date)}</div>
+              <div class="subtitle">${entry.title || 'AI Alpha Report'}</div>
+            </div>
+          `;
+          row.onclick = () => selectReport(entry);
           historyEl.appendChild(row);
         });
 
-        metaEl.textContent = `${selected.date} • ${selected.title || 'Daily AI Alpha'}`;
-        contentEl.textContent = await loadReport(selected.path);
+        await selectReport(selected);
       } catch (err) {
-        contentEl.textContent = 'Failed to load reports: ' + err.message;
+        mainEl.innerHTML = `<div class="empty">
+          <div class="empty-icon">⚠️</div>
+          <div class="empty-text">Failed to load</div>
+          <div class="empty-sub">${err.message}</div>
+        </div>`;
       }
     }
 
