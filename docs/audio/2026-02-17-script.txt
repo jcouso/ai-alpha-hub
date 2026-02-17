@@ -1,0 +1,31 @@
+AI Alpha audio briefing for February 17, 2026.
+
+Here are today's key signals in under three minutes.
+
+Top headlines:
+
+1. Qwen 3.5 dropped — 397B MoE (17B active), open weights, 8-19x faster inference, native multimodal, designed for "agentic AI era"
+
+2. Pentagon threatens to label Anthropic a "supply chain risk" — $200M contract at stake, Claude's military restrictions trigger retaliation
+
+3. Research: AGENTS.md files actually hurt coding agents — arxiv paper shows they reduce success rates and increase cost 20%
+
+4. GitHub's Eternal September — PRs can now be disabled entirely; Jeff Geerling says AI is destroying open source
+
+Most actionable moves:
+
+1. Qwen 3.5 — Open-Weights Agentic Frontier Model
+
+2. Pentagon Threatens Anthropic as "Supply Chain Risk"
+
+3. AGENTS.md Files Actually Hurt Coding Agents
+
+Next actions for today:
+
+1. Audit your AGENTS.md — The research is in: less is more. Trim to essential build/test commands and critical constraints only.
+
+2. Install claude-devtools — If you use Claude Code, get visibility back. Free, zero config, immediate value.
+
+Full links and source details are available in the written report.
+
+End of briefing.
