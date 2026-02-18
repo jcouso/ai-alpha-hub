@@ -1,31 +1,25 @@
-AI Alpha audio briefing for February 17, 2026.
+AI Alpha briefing for February seventeenth, twenty twenty six.
 
-Here are today's key signals in under three minutes.
+Here is the short version of what actually matters today.
 
-Top headlines:
+First, Alibaba released Qwen three point five, an open model aimed at agent workflows. Early signals suggest it is fast, multimodal, and strong enough to pressure closed model pricing.
 
-1. Qwen 3.5 dropped — 397B MoE (17B active), open weights, 8-19x faster inference, native multimodal, designed for "agentic AI era"
+Second, the Pentagon is threatening to classify Anthropic as a supply chain risk because of military usage restrictions in Claude policy. If that escalates, it could affect enterprise adoption around government contracts.
 
-2. Pentagon threatens to label Anthropic a "supply chain risk" — $200M contract at stake, Claude's military restrictions trigger retaliation
+Third, a new research paper says long AGENTS dot M D files can hurt coding agent performance instead of helping. The practical takeaway is simple: keep agent instructions short and only include critical constraints.
 
-3. Research: AGENTS.md files actually hurt coding agents — arxiv paper shows they reduce success rates and increase cost 20%
+Fourth, GitHub publicly acknowledged the flood of low quality AI pull requests and shipped stronger controls for maintainers. That is a real workflow shift for open source teams.
 
-4. GitHub's Eternal September — PRs can now be disabled entirely; Jeff Geerling says AI is destroying open source
+And fifth, legal pressure on video generation is getting much more aggressive, with Disney and other major media groups pushing hard against Seedance outputs. Expect tighter enforcement and more licensing battles.
 
-Most actionable moves:
+For today, run three actions.
 
-1. Qwen 3.5 — Open-Weights Agentic Frontier Model
+One: test Qwen three point five on a real task in your stack.
 
-2. Pentagon Threatens Anthropic as "Supply Chain Risk"
+Two: trim your AGENTS dot M D to essential instructions only.
 
-3. AGENTS.md Files Actually Hurt Coding Agents
+Three: lock down pull request permissions in any public repo you maintain.
 
-Next actions for today:
-
-1. Audit your AGENTS.md — The research is in: less is more. Trim to essential build/test commands and critical constraints only.
-
-2. Install claude-devtools — If you use Claude Code, get visibility back. Free, zero config, immediate value.
-
-Full links and source details are available in the written report.
+Full links and deeper analysis are in the written report.
 
 End of briefing.
