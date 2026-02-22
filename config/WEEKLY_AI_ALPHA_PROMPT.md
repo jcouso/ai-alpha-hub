@@ -15,6 +15,13 @@ Wants: what actually moved, what to test, what to build.
 
 ## PIPELINE — execute in order
 
+### STEP 0: Fetch RSS data (YouTube + Google News)
+Run this FIRST to get structured, timestamped data from tracked channels and news queries:
+```
+bash /Users/jcbot/code/ai-alpha-hub/scripts/fetch-rss.sh --hours 168
+```
+(168h = 7 days). Read the output — these are verified YouTube uploads from practitioners and real news articles. Use them to supplement the daily reports in Steps 1 and 2.
+
 ### STEP 1: Read the past 7 daily reports
 ```bash
 ls /Users/jcbot/code/ai-alpha-hub/docs/reports/ | tail -8
