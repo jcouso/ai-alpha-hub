@@ -103,6 +103,21 @@ Link.
 Only include papers with real traction (HN points, citations, or referenced in daily reports).
 No theory-only papers with no practical implication.
 
+### 🎙️ Top Podcasts of the Week
+3-5 episodes. Only specific episodes — not generic show recommendations.
+Format: **Show — "Episode Title"**
+One line: what's in it and why it's worth listening.
+Duration + link to specific episode.
+Pull from daily reports + RSS fetcher output.
+
+### 📺 Top YouTube Picks of the Week
+3-5 videos from the tracked channels (RSS fetcher output) or discovered via research.
+Format: **[Channel] "Video Title"**
+One line: what you'll learn / why it matters for a senior dev.
+URL.
+Prefer: tutorials, live coding, workflow demos, practitioner "how I use X" videos.
+Skip: news roundups, generic AI explainers.
+
 ### 🧪 Test This Week
 3-4 concrete things Juan can test in his setup RIGHT NOW.
 Each item must have:
@@ -138,6 +153,10 @@ Only after publish succeeds, send the WhatsApp digest.
 📦 *Repos em alta:* [top 3 with stars]
 
 🔬 *Papers:* [top 2, one line each]
+
+🎙️ *Podcast da semana:* [top 1, episode + link]
+
+📺 *YouTube:* [top 2 videos, channel + title + URL]
 
 🧪 *Testar:* [top 2 actionables]
 
