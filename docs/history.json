@@ -1,10 +1,47 @@
 [
-  {"date":"2026-02-21","title":"🚨 Claude Code Security Launches + Karpathy Coins 'Claws' + Kiro AI Causes 13h AWS Outage + Cord Agent Trees + Hassabis Memory Famine Warning","path":"./reports/2026-02-21.md"},
-  {"date":"2026-02-20","title":"🔥 ggml.ai Joins Hugging Face + Gemini 3.1 Pro (77% ARC-AGI-2) + Stripe Minions 1300 PRs/Week + Semantic Kernel CVSS 9.9 + Claude PowerPoint → Pro + GitHub Actions Run IDs","path":"./reports/2026-02-20.md"},
-  {"date":"2026-02-19","title":"🚨 Anthropic Blocks Claude Max OAuth + Pentagon Supply Chain Threat + Sony Joins Seedance Pile-On + EVMbench + Copilot Gets Opus 4.6","path":"./reports/2026-02-19.md"},
-  {"date":"2026-02-18","title":"🔥 Claude Sonnet 4.6 Drops + OpenClaw Security Meltdown + AI Agent Writes Hit Piece + SkillsBench + GitHub Agentic Workflows Preview","path":"./reports/2026-02-18.md"},
-  {"date":"2026-02-17","title":"🔥 Qwen 3.5 Open Weights + Pentagon vs Anthropic + AGENTS.md Hurts Agents + GitHub Eternal September + Disney vs Seedance","path":"./reports/2026-02-17.md"},
-  {"date":"2026-02-16","title":"🚀 GitHub Agentic Workflows + WebMCP + OpenClaw Foundation + Cerebras Production + Video AI 4K","path":"./reports/2026-02-16.md"},
-  {"date":"2026-02-15","title":"🔥 OpenClaw Creator Joins OpenAI + GPT-4o Retired + Disney vs Seedance + Anthropic $30B + Agent Teams","path":"./reports/2026-02-15.md"},
-  {"date":"2026-02-14","title":"GitHub Agentic Workflows, Codex-Spark 15x, Gemini 3 Deep Think, DeepSeek V4 Incoming","path":"./reports/2026-02-14.md"}
+  {
+    "date": "2026-02-22",
+    "title": "\ud83d\udd2c Anthropic Agent Autonomy Study + Gemini 3.1 Pro Tops Benchmarks + Claude Code Desktop PR Automation + Sam Altman \"World Not Prepared\"",
+    "path": "./reports/2026-02-22.md"
+  },
+  {
+    "date": "2026-02-21",
+    "title": "\ud83d\udea8 Claude Code Security Launches + Karpathy Coins 'Claws' + Kiro AI Causes 13h AWS Outage + Cord Agent Trees + Hassabis Memory Famine Warning",
+    "path": "./reports/2026-02-21.md"
+  },
+  {
+    "date": "2026-02-20",
+    "title": "\ud83d\udd25 ggml.ai Joins Hugging Face + Gemini 3.1 Pro (77% ARC-AGI-2) + Stripe Minions 1300 PRs/Week + Semantic Kernel CVSS 9.9 + Claude PowerPoint \u2192 Pro + GitHub Actions Run IDs",
+    "path": "./reports/2026-02-20.md"
+  },
+  {
+    "date": "2026-02-19",
+    "title": "\ud83d\udea8 Anthropic Blocks Claude Max OAuth + Pentagon Supply Chain Threat + Sony Joins Seedance Pile-On + EVMbench + Copilot Gets Opus 4.6",
+    "path": "./reports/2026-02-19.md"
+  },
+  {
+    "date": "2026-02-18",
+    "title": "\ud83d\udd25 Claude Sonnet 4.6 Drops + OpenClaw Security Meltdown + AI Agent Writes Hit Piece + SkillsBench + GitHub Agentic Workflows Preview",
+    "path": "./reports/2026-02-18.md"
+  },
+  {
+    "date": "2026-02-17",
+    "title": "\ud83d\udd25 Qwen 3.5 Open Weights + Pentagon vs Anthropic + AGENTS.md Hurts Agents + GitHub Eternal September + Disney vs Seedance",
+    "path": "./reports/2026-02-17.md"
+  },
+  {
+    "date": "2026-02-16",
+    "title": "\ud83d\ude80 GitHub Agentic Workflows + WebMCP + OpenClaw Foundation + Cerebras Production + Video AI 4K",
+    "path": "./reports/2026-02-16.md"
+  },
+  {
+    "date": "2026-02-15",
+    "title": "\ud83d\udd25 OpenClaw Creator Joins OpenAI + GPT-4o Retired + Disney vs Seedance + Anthropic $30B + Agent Teams",
+    "path": "./reports/2026-02-15.md"
+  },
+  {
+    "date": "2026-02-14",
+    "title": "GitHub Agentic Workflows, Codex-Spark 15x, Gemini 3 Deep Think, DeepSeek V4 Incoming",
+    "path": "./reports/2026-02-14.md"
+  }
 ]
