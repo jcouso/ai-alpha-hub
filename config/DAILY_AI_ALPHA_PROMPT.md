@@ -157,7 +157,7 @@ REPORT SECTIONS:
 - 🧪 Research Frontier (new technical papers, fresh research, and emerging community ideas with practical alpha angle)
 - 🎬 Video & Image AI
 - 🤖 New Models & Benchmarks (VERIFIED ONLY)
-- 🎙️ Podcasts Worth Your Time (3-5, verified episode links, last 14 days)
+- 🎙️ Podcasts Worth Your Time (3-5, verified episode links, last 14 days — NEVER include youtube.com/shorts links, clips under 10 minutes, or channel homepage links; only full episodes with direct URLs)
 - 📺 YouTube Picks (1-3 specific videos from top community coders — tutorials, coding demos, workflow walkthroughs; skip news roundups; skip if nothing great dropped this week — conditional section)
 - 🧑‍💻 Coding Tips (practical)
 - ⚙️ Workflow Upgrades

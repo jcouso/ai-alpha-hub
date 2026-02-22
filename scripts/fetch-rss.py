@@ -60,10 +60,14 @@ def fetch_youtube(channels, cutoff):
                 dt = datetime.fromisoformat(p.group(1).rstrip('Z')).replace(tzinfo=timezone.utc)
                 if dt < cutoff: continue
             except: continue
+            url = lk.group(1) if lk else ''
+            # Skip YouTube Shorts
+            if '/shorts/' in url:
+                continue
             results.append({
                 'channel': name,
                 'title': t.group(1).strip(),
-                'url': lk.group(1) if lk else '',
+                'url': url,
                 'published': p.group(1),
             })
     return results

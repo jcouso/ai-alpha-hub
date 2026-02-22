@@ -109,11 +109,13 @@ Only include papers with real traction (HN points, citations, or referenced in d
 No theory-only papers with no practical implication.
 
 ### 🎙️ Top Podcasts of the Week
-3-5 episodes. Only specific episodes — not generic show recommendations.
-Format: **Show — "Episode Title"**
-One line: what's in it and why it's worth listening.
-Duration + link to specific episode.
-Pull from daily reports + RSS fetcher output.
+3-5 episodes. Strict rules:
+- ONLY full episodes (≥20 minutes) — no clips, no YouTube Shorts, no teasers
+- NEVER use youtube.com/shorts URLs
+- NEVER link to a channel homepage — always a specific episode URL
+- Format: **Show — "Episode Title"** | Duration | Link
+- One line: what's in it and why it's worth 1+ hour of Juan's time
+Pull from daily reports + RSS fetcher output. If fewer than 3 qualify, list only what qualifies.
 
 ### 📺 Top YouTube Picks of the Week
 3-5 videos from the tracked channels (RSS fetcher output) or discovered via research.
