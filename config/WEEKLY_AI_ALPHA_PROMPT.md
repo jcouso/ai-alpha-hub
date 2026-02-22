@@ -99,6 +99,6 @@ Max 14 lines:
 - [Best repo/example 2]
 🔬 [Best paper/research of week]
 🎯 *This week: [top action to take]*
-🔗 Full report: https://jcouso.github.io/ai-alpha-hub/weekly/?date=YYYY-MM-DD
+🔗 Full report: https://jcouso.github.io/ai-alpha-hub/?tab=weekly&date=YYYY-MM-DD
 
 No fluff. VERIFIED sources only for model releases. Do NOT include debug/QA chatter.

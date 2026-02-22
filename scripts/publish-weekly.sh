@@ -68,4 +68,4 @@ git add docs/weekly/ docs/weekly-history.json
 git diff --cached --quiet && echo "Nothing to commit." && exit 0
 git commit -m "chore: weekly AI alpha report ${DATE}"
 git push origin main
-echo "✅ Published: https://jcouso.github.io/ai-alpha-hub/weekly/?date=${DATE}"
+echo "✅ Published: https://jcouso.github.io/ai-alpha-hub/?tab=weekly&date=${DATE}"

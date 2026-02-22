@@ -538,6 +538,8 @@
     async function selectReport(entry) {
       const url = new URL(location.href);
       url.searchParams.set('date', entry.date);
+      if (currentTab === 'weekly') url.searchParams.set('tab', 'weekly');
+      else url.searchParams.delete('tab');
       history.replaceState({}, '', url);
       setActive(entry.path);
       sidebar.classList.remove('open');
@@ -617,7 +619,10 @@
       }
     }
 
-    render();
+    // Auto-switch tab from URL param on load
+    const initParams = new URLSearchParams(location.search);
+    if (initParams.get('tab') === 'weekly') switchTab('weekly');
+    else render();
   </script>
 </body>
 </html>
