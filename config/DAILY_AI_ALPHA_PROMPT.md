@@ -27,6 +27,12 @@ Spawn a sub-agent using sessions_spawn with model xai/grok-4.2-fast.
 Prompt it:
 "You are an AI research scout. Find 25-35 raw signals from the LAST 24 HOURS ONLY about AI coding tools, agent workflows, developer toolchains, and platform shifts.
 
+FIRST — Run the RSS fetcher to get structured YouTube + Google News data:
+```
+bash /Users/jcbot/code/ai-alpha-hub/scripts/fetch-rss.sh --hours 26
+```
+Read the output carefully. These are VERIFIED, timestamped sources — treat them as high-confidence signals. YouTube results are real uploads from tracked practitioner channels. Google News results are from the last 26h.
+
 ## WATCHLIST (CHECK THESE FIRST)
 Read the watchlist file for curated accounts:
 cat /Users/jcbot/code/ai-alpha-hub/config/watchlist.md
