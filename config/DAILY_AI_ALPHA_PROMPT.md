@@ -49,7 +49,7 @@ Additional sources (after watchlist):
 1) GitHub: trending repos, release notes, fast-rising repos, actual changelogs
 2) HN: front page + Show HN + Ask HN
 3) Discord/Reddit communities
-4) YouTube: AI dev channels (last 7 days for video content)
+4) YouTube: Check the channels listed in the watchlist (last 7 days). Look for tutorials, coding demos, and workflow walkthroughs from top practitioners — NOT news roundups. Only include if genuinely practical and educational.
 
 Mandatory coverage areas (ALWAYS include if anything happened IN THE LAST 24 HOURS):
 - **Video/image AI**: Sora, SeeDance, Veo, Kling, Runway, Pika, Midjourney, Flux, Stable Diffusion
@@ -137,7 +137,7 @@ REPORT SECTIONS:
 - 🎬 Video & Image AI
 - 🤖 New Models & Benchmarks (VERIFIED ONLY)
 - 🎙️ Podcasts Worth Your Time (3-5, verified episode links, last 14 days)
-- 📺 YouTube Picks (3-5 specific videos, verified)
+- 📺 YouTube Picks (1-3 specific videos from top community coders — tutorials, coding demos, workflow walkthroughs; skip news roundups; skip if nothing great dropped this week — conditional section)
 - 🧑‍💻 Coding Tips (practical)
 - ⚙️ Workflow Upgrades
 - 🎯 Action Pack (top 5 experiments for today)
