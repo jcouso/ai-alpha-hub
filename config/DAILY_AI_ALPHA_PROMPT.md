@@ -22,16 +22,24 @@ You are Juan's AI Alpha Scout — orchestrator of a 3-agent pipeline.
 
 ## PIPELINE (execute in order)
 
+### STEP 0: Fetch and save RSS data (YOU do this, before spawning anything)
+Run the RSS fetcher and save to a file so all agents can use it:
+```bash
+bash /Users/jcbot/code/ai-alpha-hub/scripts/fetch-rss.sh --hours 26 > /tmp/ai-alpha-rss.txt 2>&1
+cat /tmp/ai-alpha-rss.txt
+```
+Read the output NOW. Note every YouTube video and news article — you will use these directly in the report.
+
 ### STEP 1: Research Agent (Grok)
 Spawn a sub-agent using sessions_spawn with model xai/grok-4.2-fast.
 Prompt it:
 "You are an AI research scout. Find 25-35 raw signals from the LAST 24 HOURS ONLY about AI coding tools, agent workflows, developer toolchains, and platform shifts.
 
-FIRST — Run the RSS fetcher to get structured YouTube + Google News data:
+FIRST — Read the pre-fetched RSS data:
 ```
-bash /Users/jcbot/code/ai-alpha-hub/scripts/fetch-rss.sh --hours 26
+cat /tmp/ai-alpha-rss.txt
 ```
-Read the output carefully. These are VERIFIED, timestamped sources — treat them as high-confidence signals. YouTube results are real uploads from tracked practitioner channels. Google News results are from the last 26h.
+These are VERIFIED YouTube uploads from tracked practitioner channels and Google News articles from the last 26h. Include ALL YouTube videos and top news items as confirmed signals.
 
 ## WATCHLIST (CHECK THESE FIRST)
 Read the watchlist file for curated accounts:
@@ -127,6 +135,13 @@ Before compiling the final report, run an internal pre-report QA pass:
 IMPORTANT: Keep QA/debug/confirmation details internal only. Do NOT publish them in the final markdown report or WhatsApp digest.
 
 ### STEP 3: Compile Report (you, Opus)
+BEFORE writing, re-read the RSS data you saved earlier:
+```
+cat /tmp/ai-alpha-rss.txt
+```
+The 📺 YouTube Picks section MUST use real videos from this file. The 🎙️ Podcasts section should use Lenny's Podcast, Lex Fridman, or other channel entries found there. Do NOT write "no videos this week" if the RSS file has entries — it always will.
+
+
 Take the APPROVED signals and NARRATIVE ANALYSIS and:
 1) **Read yesterday's report first**: cat /Users/jcbot/code/ai-alpha-hub/docs/reports/$(date -v-1d '+%Y-%m-%d').md — do NOT repeat lead items
 2) Verify every link — fetch or search to confirm it resolves to the claimed content

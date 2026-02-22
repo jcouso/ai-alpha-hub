@@ -15,12 +15,12 @@ Wants: what actually moved, what to test, what to build.
 
 ## PIPELINE — execute in order
 
-### STEP 0: Fetch RSS data (YouTube + Google News)
-Run this FIRST to get structured, timestamped data from tracked channels and news queries:
+### STEP 0: Fetch and save RSS data (YOU do this first)
+```bash
+bash /Users/jcbot/code/ai-alpha-hub/scripts/fetch-rss.sh --hours 168 > /tmp/ai-alpha-rss-weekly.txt 2>&1
+cat /tmp/ai-alpha-rss-weekly.txt
 ```
-bash /Users/jcbot/code/ai-alpha-hub/scripts/fetch-rss.sh --hours 168
-```
-(168h = 7 days). Read the output — these are verified YouTube uploads from practitioners and real news articles. Use them to supplement the daily reports in Steps 1 and 2.
+(168h = 7 days). Read the output carefully. Note every YouTube video and podcast episode found — you MUST use these in the 📺 YouTube Picks and 🎙️ Podcasts sections. Do NOT write those sections without consulting this file first.
 
 ### STEP 1: Read the past 7 daily reports
 ```bash
@@ -60,6 +60,11 @@ Also check HN for any paper links with 100+ points from the past 7 days.
 Pull the top papers that have real traction AND practical relevance to agent builders / SaaS devs.
 
 ### STEP 3: Compile the report
+Re-read the RSS data before writing YouTube and Podcast sections:
+```
+cat /tmp/ai-alpha-rss-weekly.txt
+```
+The 📺 and 🎙️ sections MUST reference real entries from this file. Never skip or leave these sections empty.
 
 Combine daily signals + fresh research. Deduplicate. Keep only what's best.
 
