@@ -469,6 +469,10 @@
     <nav class="sidebar" id="sidebar">
       <button class="sidebar-close" id="closeBtn" onclick="toggleSidebar()">✕</button>
       <div class="sidebar-title">Report History</div>
+      <div style="display:flex;gap:6px;padding:0 16px 12px;border-bottom:1px solid var(--border);margin-bottom:8px;">
+        <button id="tab-daily" onclick="switchTab('daily')" style="flex:1;padding:6px 10px;border-radius:var(--radius-sm);border:1px solid var(--accent);background:var(--accent);color:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;">Daily</button>
+        <button id="tab-weekly" onclick="switchTab('weekly')" style="flex:1;padding:6px 10px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;">Weekly</button>
+      </div>
       <div id="history"></div>
     </nav>
     <main class="content" id="main">
@@ -482,13 +486,29 @@
     const sidebar = document.getElementById('sidebar');
     const reportCount = document.getElementById('report-count');
     let currentHistory = [];
+    let currentTab = 'daily';
 
     function toggleSidebar() {
       sidebar.classList.toggle('open');
     }
 
+    function switchTab(tab) {
+      currentTab = tab;
+      const daily = document.getElementById('tab-daily');
+      const weekly = document.getElementById('tab-weekly');
+      if (tab === 'daily') {
+        daily.style.background = 'var(--accent)'; daily.style.borderColor = 'var(--accent)'; daily.style.color = '#fff';
+        weekly.style.background = 'transparent'; weekly.style.borderColor = 'var(--border)'; weekly.style.color = 'var(--text-muted)';
+      } else {
+        weekly.style.background = 'var(--accent)'; weekly.style.borderColor = 'var(--accent)'; weekly.style.color = '#fff';
+        daily.style.background = 'transparent'; daily.style.borderColor = 'var(--border)'; daily.style.color = 'var(--text-muted)';
+      }
+      render();
+    }
+
     async function loadHistory() {
-      const res = await fetch('./history.json?t=' + Date.now());
+      const file = currentTab === 'weekly' ? './weekly-history.json' : './history.json';
+      const res = await fetch(file + '?t=' + Date.now());
       if (!res.ok) throw new Error('history not found');
       return res.json();
     }
