@@ -84,5 +84,59 @@ Only flag a video if it's genuinely educational/practical — not just news/comm
 - Prefer: live coding sessions, "how I use X" from practitioners, tool demos
 - Avoid: AI news roundups, hype videos, generic explainers anyone would find on their own
 
+## Google News RSS Queries
+The fetch-rss.sh script auto-derives queries from tool/company names above,
+PLUS these explicit queries below. Add anything here that the auto-derive misses.
+
+```
+# Models & Labs
+Claude Code
+Anthropic Claude
+OpenAI Codex
+GPT-5
+Gemini AI
+Qwen model
+DeepSeek AI
+Mistral AI
+xAI Grok
+
+# Dev Tools & Agents
+Cursor IDE
+Windsurf AI
+GitHub Copilot
+Claude Code agent
+agentic coding
+AI coding agent
+MCP protocol
+OpenClaw agent
+LLM benchmark
+
+# Practitioner topics
+vibe coding
+AI SaaS developer
+autonomous agent
+multi-agent framework
+AI workflow automation
+LLM prompt engineering
+```
+
+To add a query: just add a line above. Blank lines and `#` comments are ignored.
+
+## YouTube Channel IDs (for RSS feed fetching)
+Format: ChannelID | Display Name
+
+```
+UCXUPKJO5MZQN11PqgIvyuvQ | Andrej Karpathy
+UCwgKmJM4ZJQRJ-U5NjvR2dg | George Hotz (geohotarchive)
+UC8ENHE5xdFSwx71u3fDH5Xw | ThePrimeagen
+UCbRP3c757lWg9M-U7TyEkXA | Theo (t3.gg)
+UCsBjURrPoezykLs9EqgamOA | Fireship
+UCuE6iwZKgGz8s6kznBRI9LQ | Developers Digest
+UCNJ1Ymd5yFuUPtn21xtRbbw | AI Explained
+UCcefcZRL2oaA_uBNeo5UOWg | Y Combinator
+UCSHZKyawb77ixDdsGog4iWA | Lex Fridman
+UC6t1O76G0jYXOAoYCm153dA | Lenny's Podcast
+```
+
 ## How to update
 Just edit this file. The AI Alpha job reads it every run.
