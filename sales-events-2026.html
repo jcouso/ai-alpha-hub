@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos de Vendas 2026 — WeDevUp fora da bolha tech</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #242736;
+      --border: #2e3248;
+      --accent: #6c63ff;
+      --accent2: #00d4aa;
+      --accent3: #ff6b6b;
+      --accent4: #ffd166;
+      --text: #e8eaf0;
+      --muted: #8b8fa8;
+      --green: #00d4aa;
+      --orange: #ffd166;
+      --red: #ff6b6b;
+      --purple: #c084fc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffd166, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .meta span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: var(--surface2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Alert banner ── */
+    .alert-banner {
+      max-width: 960px;
+      margin: 1.5rem auto 0;
+      padding: 0 1rem;
+    }
+    .alert-inner {
+      background: linear-gradient(135deg, rgba(255,209,102,0.12), rgba(255,107,107,0.08));
+      border: 1px solid rgba(255,209,102,0.35);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .alert-inner strong { color: var(--orange); }
+
+    /* ── Highlight box ── */
+    .highlight-box {
+      max-width: 960px;
+      margin: 1.2rem auto;
+      padding: 0 1rem;
+    }
+
+    .highlight-inner {
+      background: linear-gradient(135deg, rgba(255,107,107,0.12), rgba(255,209,102,0.07));
+      border: 1px solid rgba(255,107,107,0.35);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+    }
+
+    .highlight-inner h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--orange);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .highlight-item {
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .highlight-item .ev-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .highlight-item .ev-why {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .highlight-item .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      margin-top: 0.4rem;
+      font-weight: 600;
+    }
+
+    .tag-buyer  { background: rgba(255,107,107,0.25); color: var(--red); }
+    .tag-sell   { background: rgba(0,212,170,0.2); color: var(--accent2); }
+    .tag-expo   { background: rgba(255,209,102,0.2); color: var(--orange); }
+    .tag-net    { background: rgba(108,99,255,0.25); color: var(--accent); }
+
+    /* ── Tabs ── */
+    .tabs-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      scrollbar-width: none;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex-shrink: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.55rem 1.2rem;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--orange);
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #111;
+    }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* ── Event Cards ── */
+    .events-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.3rem 1.5rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      border-color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card-date {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent2);
+      background: rgba(0,212,170,0.1);
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .card-location {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-audience {
+      font-size: 0.83rem;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-why {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      line-height: 1.55;
+    }
+
+    .card-pitch {
+      font-size: 0.82rem;
+      color: var(--accent2);
+      background: rgba(0,212,170,0.06);
+      border-left: 3px solid var(--accent2);
+      padding: 0.5rem 0.8rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .price-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    .price-free  { background: rgba(0,212,170,0.15); color: var(--accent2); }
+    .price-low   { background: rgba(108,99,255,0.15); color: var(--purple); }
+    .price-mid   { background: rgba(255,209,102,0.15); color: var(--orange); }
+    .price-high  { background: rgba(255,107,107,0.15); color: var(--red); }
+
+    .badge {
+      font-size: 0.73rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+
+    .badge-sponsor { border-color: rgba(255,209,102,0.4); color: var(--orange); }
+    .badge-exhibit { border-color: rgba(255,107,107,0.4); color: var(--red); }
+    .badge-buyers  { border-color: rgba(0,212,170,0.4); color: var(--accent2); }
+    .badge-network { border-color: rgba(255,255,255,0.2); color: var(--muted); }
+
+    .card-link {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    .section-intro {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1.2rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .section-intro strong { color: var(--text); }
+
+    /* ── How to Sell section ── */
+    .how-to-sell {
+      background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(0,212,170,0.06));
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 14px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .how-to-sell h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .sell-block {
+      margin-bottom: 1.4rem;
+    }
+
+    .sell-block h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sell-block p, .sell-block li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .sell-block ul { padding-left: 1.2rem; }
+    .sell-block li { margin-bottom: 0.3rem; }
+
+    .opening-line {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 10px 10px 0;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.875rem;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .opening-line span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: normal;
+      margin-top: 0.2rem;
+    }
+
+    .kit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.6rem;
+    }
+
+    .kit-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-size: 0.83rem;
+      color: var(--text);
+    }
+
+    .kit-item strong { display: block; color: var(--orange); font-size: 0.78rem; margin-bottom: 0.2rem; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .card { padding: 1rem; }
+      .how-to-sell { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎯 Eventos para Vendas 2026</h1>
+  <p>Onde encontrar compradores reais — empreendedores, empresários e gestores para quem você pode vender AI, automação e SaaS</p>
+  <div class="meta">
+    <span>📅 Atualizado: Fevereiro 2026</span>
+    <span>🚫 Fora da bolha tech</span>
+    <span>💼 Foco: WeDevUp + SaaS vertical</span>
+    <span>📍 Base: São Paulo, Brasil</span>
+  </div>
+</header>
+
+<div class="alert-banner">
+  <div class="alert-inner">
+    <strong>⚡ Estratégia:</strong> Este relatório foca em eventos onde o público NÃO são desenvolvedores — são donos de empresa, gestores, marketeiros e profissionais de setores como saúde, varejo, RH, imobiliário e finanças. São eles que pagam por AI agents, automações e SaaS.
+  </div>
+</div>
+
+<!-- ── HIGHLIGHT BOX ── -->
+<div class="highlight-box">
+  <div class="highlight-inner">
+    <h2>🔥 Top 6 Eventos para Fechar Negócios em 2026</h2>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <div class="ev-name">ABF Franchising Expo</div>
+        <div class="ev-why">Jun · Franqueadores & donos de redes buscando tech</div>
+        <span class="tag tag-buyer">🛒 Compradores</span>
+        <span class="tag tag-expo">🎪 Expositor</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">RD Summit</div>
+        <div class="ev-why">Nov · Maior evento de marketing/vendas LatAm</div>
+        <span class="tag tag-sell">💰 Pitch SaaS</span>
+        <span class="tag tag-buyer">🛒 Gestores</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">CONAREC</div>
+        <div class="ev-why">Set · CX & Customer Experience — empresas médias/grandes</div>
+        <span class="tag tag-buyer">🛒 C-Level</span>
+        <span class="tag tag-expo">🎪 Sponsor</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">Digitalks</div>
+        <div class="ev-why">Set 2026 · Marketing digital, creators e negócios</div>
+        <span class="tag tag-sell">💰 Prospects</span>
+        <span class="tag tag-net">🤝 Network</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">FEBRABAN Tech (CIAB)</div>
+        <div class="ev-why">Jun · Fintech + bancos + fintechs comprando tech</div>
+        <span class="tag tag-buyer">🛒 Fintech</span>
+        <span class="tag tag-expo">🎪 Expositor</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">E-Commerce Brasil Forum</div>
+        <div class="ev-why">Jul · Varejistas e marcas investindo em automação</div>
+        <span class="tag tag-sell">💰 Varejo</span>
+        <span class="tag tag-buyer">🛒 PMEs</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TABS ── -->
+<div class="tabs-wrapper">
+  <div class="tab-nav" role="tablist">
+    <button class="tab-btn active" data-tab="empreend">💼 Empreendedorismo</button>
+    <button class="tab-btn" data-tab="mktg">📈 Marketing & CX</button>
+    <button class="tab-btn" data-tab="vertical">🏭 Verticais</button>
+    <button class="tab-btn" data-tab="feiras">🌎 Feiras B2B</button>
+    <button class="tab-btn" data-tab="network">🤝 Networking</button>
+    <button class="tab-btn" data-tab="howto">🎓 Como Vender</button>
+  </div>
+
+  <!-- ══════════ TAB 1: EMPREENDEDORISMO ══════════ -->
+  <div id="tab-empreend" class="tab-pane active">
+    <div class="section-intro">
+      <strong>Empreendedores e donos de empresa</strong> — fóruns, congressos e feiras voltados para PMEs, franquias e negócios em crescimento. Seu público ideal: dono de empresa que precisa de tech mas não sabe por onde começar.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">ABF Franchising Expo</div>
+          <div class="card-date">Jun 2026</div>
+        </div>
+        <div class="card-location">📍 Expo Center Norte — São Paulo, SP</div>
+        <div class="card-audience">👥 Franqueadores, donos de redes, investidores em franquias</div>
+        <div class="card-why">
+          A maior feira de franchising da América Latina. Centenas de redes franqueadoras em expansão — cada uma é um potencial cliente para automação de processos, onboarding digital de franqueados e sistemas de gestão.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Ajudamos redes de franquias a automatizar o onboarding de novos franqueados e padronizar operações com AI — sem precisar de TI interna."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Visitante: ~R$50–200 | Stand: R$15k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 Alto potencial de venda</span>
+          <a class="card-link" href="https://www.abf.com.br" target="_blank">abf.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">HSM ExpoManagement</div>
+          <div class="card-date">Nov 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 CEOs, diretores, gestores de médias e grandes empresas</div>
+        <div class="card-why">
+          O maior evento de gestão e liderança do Brasil — HSM reúne C-level de empresas tradicionais que estão sendo pressionados a se digitalizar. Palestrantes internacionais e muito networking de alto nível.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Empresas como a sua já usam AI agents para automatizar relatórios, atendimento e processos. A gente implementa em 30 dias."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">Ingresso: R$3.000–8.000 | Sponsor: consultar</span>
+          <span class="badge badge-sponsor">⭐ Sponsor disponível</span>
+          <span class="badge badge-buyers">🛒 C-Level direto</span>
+          <a class="card-link" href="https://www.hsm.com.br" target="_blank">hsm.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Expo Pequenas Empresas & Grandes Negócios (PEGN)</div>
+          <div class="card-date">Ago/Set 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Micro e pequenos empresários, empreendedores de 1ª viagem</div>
+        <div class="card-why">
+          Organizada pela Editora Globo, atrai dezenas de milhares de empreendedores em fase de crescimento. Perfil: dono de PME que quer tecnologia mas sente que é caro e complexo — exatamente quem você converte com uma demo rápida.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "A gente constrói o time de tecnologia da sua empresa — por uma fração do custo de contratar um dev."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">Visitante: Gratuito–R$50 | Stand: R$8k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 Volume alto de PMEs</span>
+          <a class="card-link" href="https://www.revistapegn.globo.com/expo" target="_blank">revistapegn.globo.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Fórum Empreendedorismo Endeavor</div>
+          <div class="card-date">Mai/Out 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo + outras cidades</div>
+        <div class="card-audience">👥 Scale-ups, fundadores em crescimento, investidores anjo</div>
+        <div class="card-why">
+          A Endeavor reúne empresas em fase de escala — são negócios que já faturam e precisam de automação para crescer sem aumentar headcount. Ambiente de networking qualificado.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "A WeDevUp acelera o crescimento de scale-ups — implementamos AI agents que fazem o trabalho de 3 funcionários em operações repetitivas."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Ingresso: R$500–2.000 | Patrocínio disponível</span>
+          <span class="badge badge-sponsor">⭐ Sponsor disponível</span>
+          <span class="badge badge-buyers">🛒 Founders qualificados</span>
+          <a class="card-link" href="https://www.endeavor.org.br" target="_blank">endeavor.org.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Sebrae Conecta / Semana do MEI</div>
+          <div class="card-date">Mar–Out 2026 (recorrente)</div>
+        </div>
+        <div class="card-location">📍 São Paulo + Interior SP + Online</div>
+        <div class="card-audience">👥 MEIs, microempresários, empreendedores formalizando negócios</div>
+        <div class="card-why">
+          Sebrae organiza dezenas de eventos ao longo do ano com MEIs e microempresários. São compradores de SaaS simples e automações acessíveis — ticket menor, mas volume gigante.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Seu WhatsApp atende clientes 24h sozinho — a gente configura em 1 semana por R$X/mês."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito (Sebrae patrocina)</span>
+          <span class="badge badge-exhibit">🎪 Parceria Sebrae</span>
+          <span class="badge badge-buyers">🛒 Volume de MEIs</span>
+          <a class="card-link" href="https://www.sebrae.com.br/eventos" target="_blank">sebrae.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">LIDE Fórum de Lideranças Empresariais</div>
+          <div class="card-date">Trimestral 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo (e outras capitais)</div>
+        <div class="card-audience">👥 CEOs, presidentes, diretores de grandes empresas brasileiras</div>
+        <div class="card-why">
+          O LIDE é presidido por João Doria e reúne o empresariado top de SP. Eventos exclusivos com líderes empresariais — networking de altíssimo nível para vender projetos de AI corporativo.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Implementamos AI que reduz custo operacional em 40% — já fizemos isso para empresas do mesmo setor que a sua."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">Associação: R$5.000+/ano | Eventos: R$500–3.000</span>
+          <span class="badge badge-buyers">🛒 Alto ticket médio</span>
+          <span class="badge badge-network">🌐 Network exclusivo</span>
+          <a class="card-link" href="https://www.lide.com.br" target="_blank">lide.com.br →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 2: MARKETING & CX ══════════ -->
+  <div id="tab-mktg" class="tab-pane">
+    <div class="section-intro">
+      <strong>Marketing, Vendas e Experiência do Cliente</strong> — gestores de marketing e CX são os que mais investem em automação, chatbots, AI para leads e personalização. Público com budget e dor clara.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">RD Summit</div>
+          <div class="card-date">Nov 2026</div>
+        </div>
+        <div class="card-location">📍 Florianópolis, SC</div>
+        <div class="card-audience">👥 Gestores de marketing, vendas, ops — PMEs e médias empresas</div>
+        <div class="card-why">
+          O maior evento de marketing e vendas da América Latina, com mais de 20.000 participantes. Público perfeito: profissionais de marketing de empresas que precisam de automação de leads, CRM e AI para conversão. Muitas PMEs presentes.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "A gente integra AI no seu funil de vendas — qualificação automática de leads, follow-up por WhatsApp e relatórios sem planilhas."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Ingresso: R$800–2.500 | Stand: R$20k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 20k+ profissionais de vendas</span>
+          <a class="card-link" href="https://rdsummit.rdstation.com" target="_blank">rdsummit.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Digitalks — Arena Digitalks</div>
+          <div class="card-date">Setembro 2026</div>
+        </div>
+        <div class="card-location">📍 Community Center Academy — São Paulo, SP</div>
+        <div class="card-audience">👥 Profissionais de marketing digital, criadores de conteúdo, executivos de marketing</div>
+        <div class="card-why">
+          Confirmado para setembro 2026 no Community Center Academy (14.000m²). Foco em marketing digital, inovação e creator economy. Público de gestores e empresários que investem pesado em conteúdo e automação digital.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Automatize sua produção de conteúdo com AI — a gente cria o sistema que gera posts, relatórios e e-mails no piloto automático."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Ingresso: R$500–1.500 | Sponsor: consultar</span>
+          <span class="badge badge-sponsor">⭐ Sponsor disponível</span>
+          <span class="badge badge-buyers">🛒 Marketing managers</span>
+          <a class="card-link" href="https://digitalks.com.br" target="_blank">digitalks.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">CONAREC — Congresso Nacional de Relacionamento com o Cliente</div>
+          <div class="card-date">Setembro 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Diretores de CX, Customer Service, Contact Center e Marketing — médias e grandes empresas</div>
+        <div class="card-why">
+          Confirmado para 2026 — "O maior evento de CX do Mundo". Diretores e VPs de experiência do cliente buscam AI para atendimento, chatbots, análise de sentimento e automação de contact center. Budget alto, dor urgente.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Reduzimos o volume de tickets em 60% com AI agents de atendimento — sem demitir ninguém, só redirecionando o time para casos complexos."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">Ingresso: R$2.000–5.000 | Sponsor: R$30k+</span>
+          <span class="badge badge-sponsor">⭐ Sponsor principal</span>
+          <span class="badge badge-buyers">🛒 C-Level CX</span>
+          <a class="card-link" href="https://conarec.com.br" target="_blank">conarec.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Fórum E-Commerce Brasil</div>
+          <div class="card-date">Jul 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Donos de e-commerce, gestores de marketplace, diretores de varejo online</div>
+        <div class="card-why">
+          O maior evento de e-commerce da América Latina. Varejistas digitais precisam de automação para pedidos, atendimento, estoque e marketing — tudo que a WeDevUp entrega.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Automatizamos seu atendimento no WhatsApp, rastreamento de pedidos e recuperação de carrinho com AI — aumenta conversão sem aumentar equipe."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Ingresso: R$800–2.000 | Expositor: R$15k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 Varejistas com budget</span>
+          <a class="card-link" href="https://www.ecommercebrasil.com.br" target="_blank">ecommercebrasil.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Painel ABComm — E-Commerce Brasil</div>
+          <div class="card-date">Abr 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Gestores de e-commerce, diretores de TI/marketing de varejistas</div>
+        <div class="card-why">
+          Evento focado em dados e tendências do e-commerce brasileiro. Público técnico-decisor que já investiu em digital e busca o próximo nível de automação e personalização via AI.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "AI de recomendação de produtos e precificação dinâmica — a gente entrega em 45 dias integrado ao seu ERP."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">Ingresso: ~R$300–600</span>
+          <span class="badge badge-buyers">🛒 E-commerce managers</span>
+          <span class="badge badge-network">🌐 Networking qualificado</span>
+          <a class="card-link" href="https://www.abcomm.org.br" target="_blank">abcomm.org.br →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 3: VERTICAIS ══════════ -->
+  <div id="tab-vertical" class="tab-pane">
+    <div class="section-intro">
+      <strong>Saúde, Finanças, RH, Imobiliário e Varejo</strong> — cada setor tem uma dor específica que AI/automação resolve. Eventos verticais têm público mais qualificado e menos concorrência de outras agências de dev.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">FEBRABAN Tech (antigo CIAB FEBRABAN)</div>
+          <div class="card-date">Jun 2026</div>
+        </div>
+        <div class="card-location">📍 Expo Center Norte — São Paulo, SP</div>
+        <div class="card-audience">👥 Executivos de bancos, fintechs, cooperativas de crédito, gestores financeiros</div>
+        <div class="card-why">
+          O principal evento de tecnologia financeira do Brasil (renomeado para FEBRABAN Tech). Fintechs e bancos médios buscam parceiros de desenvolvimento para AI em compliance, análise de crédito e automação de processos bancários.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Desenvolvemos AI agents para análise de crédito, detecção de fraude e automação de processos — integrado ao seu core banking em semanas."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">Ingresso: R$2.000–5.000 | Stand: R$30k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 Fintechs & bancos</span>
+          <a class="card-link" href="https://www.febraban.org.br" target="_blank">febraban.org.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Hospitalar — Feira Internacional de Saúde</div>
+          <div class="card-date">Mai 2026</div>
+        </div>
+        <div class="card-location">📍 Expo Center Norte — São Paulo, SP</div>
+        <div class="card-audience">👥 Diretores de hospitais, clínicas, gestores de saúde, operadoras</div>
+        <div class="card-why">
+          Uma das maiores feiras de saúde do mundo. Gestores de saúde buscam automação de agendamento, triagem, prontuário e processos administrativos — mercado enorme e com pouca concorrência de agências de AI.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Automatizamos agendamento, confirmação de consultas e triagem por WhatsApp — sua equipe foca no paciente, não no telefone."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Visitante: ~R$200 | Stand: R$20k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 Gestores de saúde</span>
+          <a class="card-link" href="https://www.hospitalar.com" target="_blank">hospitalar.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">CONARH — Congresso Nacional de Gestão de Pessoas (ABRH)</div>
+          <div class="card-date">Ago/Set 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Diretores de RH, CHROs, gestores de pessoas, recrutadores corporativos</div>
+        <div class="card-why">
+          O maior congresso de RH do Brasil. Gestores de RH buscam automação de recrutamento (triagem de CVs, chatbots de onboarding), análise de People Analytics e sistemas de gestão de performance — tudo com AI.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "AI que triagem 200 currículos em 5 minutos e agenda entrevistas automaticamente — seu time de RH foca nas conversas que importam."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Ingresso: R$800–2.500 | Expositor: R$10k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 CHROs e diretores de RH</span>
+          <a class="card-link" href="https://www.abrh.org.br" target="_blank">abrh.org.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Expo Real Estate Brasil / Construsummit</div>
+          <div class="card-date">Abr/Mai 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Incorporadoras, corretoras imobiliárias, gestores de property tech</div>
+        <div class="card-why">
+          Construtoras e incorporadoras estão digitalizando vendas e relacionamento. AI para qualificação de leads imobiliários, tour virtual automatizado e CRM com AI são demandas crescentes neste setor.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Qualificação automática de leads no WhatsApp — o comprador informa renda, perfil e objetivo antes de falar com o corretor."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">Ingresso: ~R$200–500 | Stand: R$8k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 Incorporadoras & corretoras</span>
+          <a class="card-link" href="https://www.construsummit.com.br" target="_blank">construsummit.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Fispal Food Service / Fispal Tecnologia</div>
+          <div class="card-date">Jun 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo Expo — São Paulo, SP</div>
+        <div class="card-audience">👥 Donos de restaurantes, redes de alimentação, distribuidores food</div>
+        <div class="card-why">
+          Maior feira de food service do hemisfério sul. Redes de restaurante e alimentação precisam de automação de pedidos, gestão de estoque com AI, cardápio digital e integração com apps de delivery.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Cardápio digital + pedidos automáticos pelo WhatsApp + controle de estoque com AI — tudo integrado, sem garçom na tomada."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Visitante: ~R$150 | Stand: R$15k+</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <span class="badge badge-buyers">🛒 Redes de alimentação</span>
+          <a class="card-link" href="https://www.fispalfoodservice.com.br" target="_blank">fispalfoodservice.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">VTEX Day — Varejo e Digital Commerce</div>
+          <div class="card-date">Mai/Jun 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Diretores de varejo, e-commerce managers, marcas em omnichannel</div>
+        <div class="card-why">
+          Evento global de varejo digital da VTEX. Marcas médias e grandes em transformação digital — buscam parceiros para personalização de jornada, AI no checkout e automação de operações omnichannel.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Personalização por AI no seu e-commerce — cada cliente vê produtos diferentes baseados no comportamento dele. Aumenta ticket médio em 25%."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Ingresso: ~R$500–1.500 | Partner booth: consultar</span>
+          <span class="badge badge-sponsor">⭐ Partner disponível</span>
+          <span class="badge badge-buyers">🛒 Retail managers</span>
+          <a class="card-link" href="https://vtex.com/vtex-day" target="_blank">vtex.com →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 4: FEIRAS B2B ══════════ -->
+  <div id="tab-feiras" class="tab-pane">
+    <div class="section-intro">
+      <strong>Feiras e exposições B2B</strong> — onde você pode montar stand, distribuir material e ter conversas comerciais com compradores. Custo maior, mas retorno direto em leads qualificados.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Expo Franchising ABF</div>
+          <div class="card-date">Jun 2026</div>
+        </div>
+        <div class="card-location">📍 Expo Center Norte — São Paulo, SP</div>
+        <div class="card-audience">👥 Franqueadores de todos os setores + investidores em franquias</div>
+        <div class="card-why">
+          Mais de 800 marcas franqueadoras e 80.000 visitantes. Ambiente perfeito para expor soluções de AI/automação para redes que estão crescendo e precisam de tecnologia para padronizar operações.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Somos o time de tech para redes de franquias — automação de processos, treinamento digital e sistemas de gestão customizados."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">Stand básico: R$15k–40k | Visitante: R$50</span>
+          <span class="badge badge-exhibit">🎪 Stand disponível</span>
+          <span class="badge badge-buyers">🛒 80.000 visitantes</span>
+          <a class="card-link" href="https://www.abf.com.br" target="_blank">abf.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">ExpoGestão FIESP / FecomercioSP Expo</div>
+          <div class="card-date">Ago 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Empresários do comércio, indústria e serviços de SP</div>
+        <div class="card-why">
+          Eventos da FIESP e FecomercioSP reúnem empresários do comércio e indústria paulista. Público conservador mas com budget — precisam de convencimento prático com cases e demos.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Fizemos isso para uma empresa como a sua no setor [X] — quer ver o resultado em 10 minutos?"
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Visitante: gratuito–R$200 | Stand: R$10k+</span>
+          <span class="badge badge-exhibit">🎪 Stand disponível</span>
+          <span class="badge badge-buyers">🛒 Empresários tradicionais</span>
+          <a class="card-link" href="https://www.fecomercio.com.br" target="_blank">fecomercio.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Automação Industrial Expo / Smart Manufacturing</div>
+          <div class="card-date">Set 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Diretores industriais, engenheiros de produção, gestores de manufatura</div>
+        <div class="card-why">
+          Indústria manufatureira está na largada da automação com AI — desde controle de qualidade visual por computer vision até predição de falhas em máquinas. Mercado enorme, pouca concorrência de agências de software.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "AI que detecta falhas na linha de produção antes de acontecer — reduz downtime e custo de manutenção em 30%."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Visitante: R$150–400 | Stand: consultar</span>
+          <span class="badge badge-exhibit">🎪 Expositor possível</span>
+          <span class="badge badge-buyers">🛒 Indústria manufatureira</span>
+          <a class="card-link" href="https://www.feiraautomacao.com.br" target="_blank">feiraautomacao.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">HR Tech Brazil</div>
+          <div class="card-date">Out 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Profissionais de RH, recrutadores, diretores de pessoas</div>
+        <div class="card-why">
+          O principal evento de tecnologia em RH no Brasil. CHROs e diretores de RH que precisam de automação de recrutamento, onboarding digital e People Analytics. Público com orçamento dedicado a HR Tech.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Construímos o ATS da sua empresa com AI — triagem automática, agendamento de entrevistas e análise de fit cultural."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Ingresso: R$500–1.500 | Sponsor: R$15k+</span>
+          <span class="badge badge-sponsor">⭐ Sponsor disponível</span>
+          <span class="badge badge-buyers">🛒 CHROs & HR Tech buyers</span>
+          <a class="card-link" href="https://www.hrtechbrazil.com.br" target="_blank">hrtechbrazil.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">NRF Inspire — National Retail Federation Brasil</div>
+          <div class="card-date">Fev/Mar 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 C-level de varejo, diretores de operações de grandes redes</div>
+        <div class="card-why">
+          Derivado da NRF global, traz tendências internacionais de varejo para o Brasil. Diretores de grandes redes buscam parceiros de AI para personalização, gestão de loja inteligente e analytics de comportamento.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "AI no PDV — previsão de demanda, precificação dinâmica e análise de comportamento em loja em tempo real."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">Ingresso: R$2.000–5.000 | Patrocínio: R$50k+</span>
+          <span class="badge badge-sponsor">⭐ Sponsor premium</span>
+          <span class="badge badge-buyers">🛒 C-level varejo</span>
+          <a class="card-link" href="https://nrf.com.br" target="_blank">nrf.com.br →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 5: NETWORKING ══════════ -->
+  <div id="tab-network" class="tab-pane">
+    <div class="section-intro">
+      <strong>Cross-industry networking</strong> — câmaras de comércio, clubes de empreendedores e redes formais de referência. Investimento baixo, relacionamentos de longo prazo. Ideal para construir pipeline consistente ao longo do ano.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">BNI (Business Network International) — São Paulo</div>
+          <div class="card-date">Semanal — ano todo 2026</div>
+        </div>
+        <div class="card-location">📍 Múltiplos capítulos em SP (20+ grupos)</div>
+        <div class="card-audience">👥 Empresários, profissionais liberais, donos de PMEs de todos os setores</div>
+        <div class="card-why">
+          A maior rede de referência de negócios do mundo. Reuniões semanais de 20–40 empresários locais — cada membro representa um setor único (ex: você seria o único "agência de AI/automação"). Modelo baseado em indicações — membros se indicam mutuamente. ROI comprovado para serviços B2B.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Sou o especialista em AI e automação do grupo — se você tiver um cliente com problema operacional, me apresenta."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Associação: ~R$3.000–5.000/ano</span>
+          <span class="badge badge-buyers">🛒 PMEs locais qualificadas</span>
+          <span class="badge badge-network">🌐 Indicações semanais</span>
+          <a class="card-link" href="https://www.bni.com.br" target="_blank">bni.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">AMCHAM-SP — Câmara Americana de Comércio</div>
+          <div class="card-date">Mensal — ano todo 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Executivos de empresas multinacionais e brasileiras com operação nos EUA</div>
+        <div class="card-why">
+          A AMCHAM-SP realiza eventos mensais de networking com executivos de empresas que têm budget para tecnologia e estão acostumados a contratar serviços em inglês/bilíngue. Ideal para vender projetos de AI corporativo de alto ticket.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Somos uma agência de AI agents baseada em SP — entregamos soluções em inglês e português, integradas com stacks americanas."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Eventos: R$200–800 | Associação: R$3.500+/ano</span>
+          <span class="badge badge-buyers">🛒 Multinacionais</span>
+          <span class="badge badge-network">🌐 Network alto padrão</span>
+          <a class="card-link" href="https://www.amcham.com.br" target="_blank">amcham.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">AHK — Câmara Brasil-Alemanha</div>
+          <div class="card-date">Mensal — ano todo 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Indústrias alemãs/europeias no Brasil — Mittelstand e grandes grupos</div>
+        <div class="card-why">
+          As empresas alemãs no Brasil (Bosch, Siemens, VW, Mercedes, etc.) têm orçamento robusto para modernização de processos e buscam fornecedores locais confiáveis de tech/AI. Câmara facilita acesso direto.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Modernizamos processos industriais com AI — integrado ao SAP e sistemas europeus. Já trabalhamos com empresas do setor de [X]."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">Eventos: R$100–500 | Associação: R$5.000+/ano</span>
+          <span class="badge badge-buyers">🛒 Empresas europeias no Brasil</span>
+          <span class="badge badge-network">🌐 Relações de confiança</span>
+          <a class="card-link" href="https://www.ahkbrasil.com" target="_blank">ahkbrasil.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">ACSP — Associação Comercial de São Paulo</div>
+          <div class="card-date">Mensal — ano todo 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-audience">👥 Comerciantes e empresários paulistas de todos os tamanhos</div>
+        <div class="card-why">
+          A maior associação comercial do Brasil. Eventos regulares, palestras e networking com comerciantes e empresários de SP. Boa porta de entrada para vender SaaS de gestão e automação para PMEs do comércio.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Automatize cobranças, NF-e e atendimento — 3 tarefas do seu dia a dia que a gente resolve com um sistema simples."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Eventos: Gratuito–R$100 | Associação: acessível</span>
+          <span class="badge badge-buyers">🛒 Comércio paulistano</span>
+          <span class="badge badge-network">🌐 Rede histórica</span>
+          <a class="card-link" href="https://www.acsp.com.br" target="_blank">acsp.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Rotary Club SP — Eventos de Negócios</div>
+          <div class="card-date">Semanal/Mensal — ano todo 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo (múltiplos clubes)</div>
+        <div class="card-audience">👥 Líderes empresariais, profissionais estabelecidos, influenciadores locais</div>
+        <div class="card-why">
+          Rotary atrai líderes empresariais consolidados — médicos, advogados, empresários sênior. Perfil que precisa de AI mas não sabe como contratar. Membros têm influência para indicar para suas redes.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Tecnologia que você não precisa entender — a gente cuida, você colhe os resultados."
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">Jantares: R$100–300 | Associação: R$2.000/ano</span>
+          <span class="badge badge-buyers">🛒 Líderes com influência</span>
+          <span class="badge badge-network">🌐 Indicações de alto valor</span>
+          <a class="card-link" href="https://www.rotary.org.br" target="_blank">rotary.org.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">YPO — Young Presidents Organization Brasil</div>
+          <div class="card-date">Mensal — ano todo 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo + outras capitais</div>
+        <div class="card-audience">👥 CEOs e presidentes de empresas com faturamento acima de R$15M</div>
+        <div class="card-why">
+          YPO reúne presidentes de empresas de alta receita com menos de 45 anos. Perfil ideal para vender projetos de AI corporativo de alto ticket. Requer indicação de membro para entrar.
+        </div>
+        <div class="card-pitch">
+          💬 Pitch: "Nossos clientes YPO economizaram R$500k/ano automatizando [processo específico] — posso mostrar o case em 15 minutos?"
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">Requer indicação | Mensalidade: R$3.000+</span>
+          <span class="badge badge-buyers">🛒 CEOs de alta receita</span>
+          <span class="badge badge-network">🌐 Indicação necessária</span>
+          <a class="card-link" href="https://www.ypo.org" target="_blank">ypo.org →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 6: COMO VENDER ══════════ -->
+  <div id="tab-howto" class="tab-pane">
+    <div class="how-to-sell">
+      <h2>🎓 Guia Tático: Como Vender em Eventos Fora da Bolha Tech</h2>
+
+      <div class="sell-block">
+        <h3>🏷️ Como posicionar a WeDevUp</h3>
+        <p style="margin-bottom:0.8rem;">Nunca diga <em>"somos uma agência de desenvolvimento de software"</em>. Esse framing não ressoa fora da bolha tech. Use posicionamentos que falam a língua do negócio:</p>
+        <div class="opening-line" style="font-style:normal; border-left-color: var(--orange);">
+          <strong>✅ Posicionamento principal:</strong><br>
+          "Somos o time de tecnologia da sua empresa — sem CLT, sem overhead. Entregamos o que você precisa e saímos do caminho."
+          <span>→ Para donos de empresa que não querem contratar TI interna</span>
+        </div>
+        <div class="opening-line" style="font-style:normal; border-left-color: var(--orange);">
+          <strong>✅ Para mercado de AI agents:</strong><br>
+          "A gente cria funcionários digitais para sua empresa — trabalham 24h, não pedem aumento e nunca erram o mesmo processo duas vezes."
+          <span>→ Para empresários curiosos com AI mas com medo de complexidade</span>
+        </div>
+        <div class="opening-line" style="font-style:normal; border-left-color: var(--orange);">
+          <strong>✅ Para SaaS vertical:</strong><br>
+          "Criamos um sistema feito especificamente para [setor] — não é software genérico, é feito para o problema que você tem todo dia."
+          <span>→ Para segmentos como saúde, imobiliário, franquias</span>
+        </div>
+      </div>
+
+      <div class="sell-block">
+        <h3>💬 Top 3 Aberturas para Não-Técnicos</h3>
+        <div class="opening-line">
+          "Qual é a tarefa da sua empresa que mais toma tempo e ainda é feita no Excel?"
+          <span>→ Abre conversa sobre dor operacional — você então apresenta a solução de automação</span>
+        </div>
+        <div class="opening-line">
+          "Seus concorrentes já estão usando AI para [processo do setor]. Você quer ver como fica para baixo quando isso virar commodity?"
+          <span>→ Cria urgência sem assustar. Funciona bem com empreendedores competitivos</span>
+        </div>
+        <div class="opening-line">
+          "A gente trabalhou com uma empresa de [setor parecido] e economizamos 20h/semana do dono. Posso te mostrar como em 5 minutos?"
+          <span>→ Case + tempo limitado = máxima conversão em eventos movimentados</span>
+        </div>
+      </div>
+
+      <div class="sell-block">
+        <h3>🎒 O que levar para o evento</h3>
+        <div class="kit-grid">
+          <div class="kit-item">
+            <strong>📱 Demo no celular</strong>
+            Demonstração de AI agent funcionando no WhatsApp — algo que o prospect possa ver em 90 segundos
+          </div>
+          <div class="kit-item">
+            <strong>📄 One-pager</strong>
+            1 folha com: o que a WeDevUp faz, 3 cases por setor, preço de entrada e QR code de contato
+          </div>
+          <div class="kit-item">
+            <strong>🔲 QR Code</strong>
+            Link direto para uma landing page do SaaS mais relevante para aquele evento específico
+          </div>
+          <div class="kit-item">
+            <strong>📊 Case por setor</strong>
+            1 slide mostrando resultado antes/depois para o setor do evento (ex: clínica, franquia, varejo)
+          </div>
+          <div class="kit-item">
+            <strong>💳 Cartão com NFC</strong>
+            Cartão com chip NFC que abre seu LinkedIn/site quando o prospect encostar o celular
+          </div>
+          <div class="kit-item">
+            <strong>📅 Calendly impresso</strong>
+            QR code para agendar reunião de 30min — "vou te mandar o link mas já agenda aqui agora"
+          </div>
+        </div>
+      </div>
+
+      <div class="sell-block">
+        <h3>🗓️ Sequência pós-evento (48h)</h3>
+        <ul>
+          <li><strong>Até 2h após conversa:</strong> WhatsApp com "Foi ótimo conversar! Aqui está o que discutimos + próximo passo: [link]"</li>
+          <li><strong>24h depois:</strong> LinkedIn request com mensagem personalizada referenciando o evento</li>
+          <li><strong>3 dias depois:</strong> E-mail com case específico do setor da pessoa + proposta de call de 30min</li>
+          <li><strong>1 semana depois:</strong> Follow-up final com "Estou montando proposta para [empresa]. Tem 20min esta semana?"</li>
+          <li><strong>Sem resposta em 2 semanas:</strong> Registra no CRM como "nurture" e entra em sequência de conteúdo mensal</li>
+        </ul>
+      </div>
+
+      <div class="sell-block">
+        <h3>📊 ROI esperado por tipo de evento</h3>
+        <ul>
+          <li><strong>BNI (semanal, R$5k/ano):</strong> 2–5 indicações qualificadas/mês → 1 cliente novo/trimestre → ROI 10x+</li>
+          <li><strong>Feira com stand (R$15–30k):</strong> 50–200 conversas → 10–30 leads → 2–5 propostas → 1–2 clientes</li>
+          <li><strong>Evento como visitante (R$500–2k):</strong> 10–30 contatos → 3–8 leads → 1–2 projetos → ROI 5–20x</li>
+          <li><strong>Câmara de comércio (mensal, R$300/evento):</strong> Relacionamento de médio prazo → projetos de alto ticket via indicação</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Relatório 2 — Eventos para Vendas fora da bolha tech · WeDevUp © 2026</p>
+  <p style="margin-top:0.4rem;">Atualizado em Fevereiro 2026 · <a href="events-2026.html" style="color:var(--accent);">← Ver eventos tech</a></p>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panes   = document.querySelectorAll('.tab-pane');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+
+      buttons.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById('tab-' + target).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
