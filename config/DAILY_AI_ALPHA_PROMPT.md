@@ -159,9 +159,9 @@ REPORT SECTIONS:
 - 🤖 New Models & Benchmarks (VERIFIED ONLY)
 - 🎙️ Podcasts Worth Your Time (1-3 episodes, verified links, last 14 days — **MANDATORY, never skip this section**. Use Lex Fridman, Lenny's Podcast, Dwarkesh Patel, or other tracked channels. NEVER include youtube.com/shorts links, clips under 10 minutes, or channel homepage links; only full episodes with direct URLs. If no new episodes in 24h, pick the best from last 14 days.)
 - 📺 Video of the Day (1 specific video from top community coders — **MANDATORY, never skip this section**. Tutorials, coding demos, workflow walkthroughs. Pick the single best drop from last 24-48h. Use real YouTube URLs from the RSS file.)
-- 🧑‍💻 Coding Tips (practical)
-- ⚙️ Workflow Upgrades
-- 🎯 Action Pack (top 5 experiments for today)
+- 🧑‍💻 Coding Tips — **MANDATORY, never skip. Include 1-2 actual code examples** (bash, Python, TypeScript, or prompt templates). Real runnable snippets — not just descriptions. Tied to what's in the news that day (e.g. if Cursor released sandboxing, show a config snippet; if a new model API dropped, show a curl call). If no hot new tool: pick the most useful practical trick from the week.
+- ⚙️ Workflow Upgrades (1-2 concrete workflow improvements a builder can apply today — "add X to your CLAUDE.md", "pipe Y into Z", etc.)
+- 🎯 Action Pack (top 3-5 experiments for today, each with a concrete first step)
 
 Do not include debug appendices or confirmation chatter in the published report.
 
