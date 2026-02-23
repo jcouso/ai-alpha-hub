@@ -667,8 +667,27 @@
       .logo-text h1 {
         font-size: 15px;
       }
+      .header-inner {
+        flex-wrap: wrap;
+      }
+      .header-nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
       .nav-pills {
-        display: none;
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 4px;
+        padding: 3px;
+        flex-shrink: 0;
+        scrollbar-width: none;
+      }
+      .nav-pills::-webkit-scrollbar { display: none; }
+      .nav-pill {
+        padding: 6px 10px;
+        font-size: 11px;
+        white-space: nowrap;
       }
       .layout {
         grid-template-columns: 1fr;
