@@ -1,0 +1,1628 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Networking & Eventos 2026 — WeDevUp / Juan</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #141414;
+      --bg-card-hover: #1a1a1a;
+      --border: #222;
+      --text: #e5e5e5;
+      --text-muted: #888;
+      --text-dim: #555;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.15);
+      --accent-text: #818cf8;
+      --green: #22c55e;
+      --green-bg: rgba(34,197,94,0.1);
+      --orange: #f59e0b;
+      --orange-bg: rgba(245,158,11,0.1);
+      --red: #ef4444;
+      --red-bg: rgba(239,68,68,0.1);
+      --blue: #3b82f6;
+      --purple: #a855f7;
+      --pink: #ec4899;
+      --radius: 12px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--accent-text); }
+    .badge {
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      color: var(--accent-text);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding: 48px 24px 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--accent-text); }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 640px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .hero-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .hero-stat strong { color: var(--text); }
+
+    /* ─── Tabs ─── */
+    .tabs-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      padding: 12px 20px;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active {
+      color: var(--accent-text);
+      border-bottom-color: var(--accent);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ─── Section ─── */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+
+    /* ─── Top Picks Banner ─── */
+    .top-picks {
+      background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.08));
+      border: 1px solid rgba(99,102,241,0.35);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+    .top-picks-header {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .top-picks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .top-pick-item {
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .top-pick-item .pick-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .top-pick-item .pick-why {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── Event Cards ─── */
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .event-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card:hover {
+      border-color: #333;
+      background: var(--bg-card-hover);
+    }
+    .event-card.highlight {
+      border-color: rgba(99,102,241,0.4);
+    }
+    .event-card.highlight::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+    }
+    .event-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .event-date {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-text);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .event-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .cost-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cost-free { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .cost-paid { background: var(--orange-bg); color: var(--orange); border: 1px solid rgba(245,158,11,0.3); }
+    .cost-premium { background: var(--red-bg); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+    .type-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(59,130,246,0.1);
+      color: #60a5fa;
+      border: 1px solid rgba(59,130,246,0.25);
+    }
+    .event-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .event-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .event-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .meta-item {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .meta-item span:first-child { flex-shrink: 0; }
+    .meta-item strong { color: var(--text); }
+    .stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .star { color: #f59e0b; font-size: 0.8rem; }
+    .star-empty { color: var(--text-dim); font-size: 0.8rem; }
+    .star-label { font-size: 0.78rem; color: var(--text-muted); margin-left: 4px; }
+    .event-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .event-link {
+      font-size: 0.82rem;
+      color: var(--accent-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s;
+    }
+    .event-link:hover { color: #a5b4fc; }
+    .recurring-tag {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* ─── Month Separator ─── */
+    .month-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 32px 0 16px;
+    }
+    .month-header:first-child { margin-top: 0; }
+    .month-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-text);
+      white-space: nowrap;
+    }
+    .month-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Annual Calendar Table ─── */
+    .cal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .cal-table th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cal-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #1a1a1a;
+      vertical-align: top;
+    }
+    .cal-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .cal-month {
+      font-weight: 700;
+      color: var(--accent-text);
+      white-space: nowrap;
+    }
+    .cal-event { font-weight: 500; }
+    .cal-type {
+      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .cal-why { color: var(--text-muted); font-size: 0.82rem; }
+    .cal-cost { color: var(--text-muted); white-space: nowrap; font-size: 0.8rem; }
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    /* ─── Groups / Associations ─── */
+    .groups-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .group-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .group-card:hover {
+      border-color: #333;
+      background: var(--bg-card-hover);
+    }
+    .group-card.highlight { border-color: rgba(99,102,241,0.4); }
+    .group-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .group-emoji { font-size: 1.6rem; }
+    .group-title { font-size: 1rem; font-weight: 700; }
+    .group-tagline { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+    .group-stars { display: flex; gap: 3px; margin-top: 4px; }
+    .group-body { display: flex; flex-direction: column; gap: 10px; }
+    .group-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .group-row-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+    }
+    .group-row-val { font-size: 0.85rem; color: var(--text-muted); }
+    .group-row-val strong { color: var(--text); }
+    .group-link {
+      font-size: 0.82rem;
+      color: var(--accent-text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .group-link:hover { color: #a5b4fc; }
+
+    /* ─── Footer ─── */
+    .footer {
+      max-width: 1100px;
+      margin: 60px auto 0;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-note { font-size: 0.78rem; color: var(--text-dim); }
+    .footer-note a { color: var(--accent-text); text-decoration: none; }
+    .update-badge {
+      font-size: 0.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 640px) {
+      .hero { padding: 32px 16px 24px; }
+      .tabs-container { padding: 0 16px; }
+      .tab { padding: 10px 14px; font-size: 0.82rem; }
+      .groups-list { grid-template-columns: 1fr; }
+      .event-meta { grid-template-columns: 1fr 1fr; }
+      .cal-table th:nth-child(3),
+      .cal-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Header ─── -->
+<header class="header">
+  <div class="header-left">
+    <a href="index.html" class="logo">AI <span>Alpha</span> Hub</a>
+    <span class="badge">🤝 Networking</span>
+  </div>
+  <a href="index.html" class="back-link">← Voltar ao Hub</a>
+</header>
+
+<!-- ─── Hero ─── -->
+<div class="hero">
+  <h1>Agenda de <span>Networking</span> 2026</h1>
+  <p>Eventos, meetups, grupos e associações para Juan / WeDevUp — vender AI, automação e SaaS para empresas em São Paulo.</p>
+  <div class="hero-meta">
+    <div class="hero-stat"><strong>3 tabs</strong> — próximas semanas, ano todo, grupos</div>
+    <div class="hero-stat"><strong>Objetivo:</strong> clientes, parceiros, ecossistema startup</div>
+    <div class="hero-stat">🎯 Foco: AI agents · automação · SaaS</div>
+  </div>
+</div>
+
+<!-- ─── Tabs ─── -->
+<div class="tabs-container">
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" onclick="switchTab('proximas', this)">📅 Próximas semanas</button>
+    <button class="tab" role="tab" onclick="switchTab('agenda2026', this)">📆 Agenda 2026</button>
+    <button class="tab" role="tab" onclick="switchTab('grupos', this)">🤝 Grupos &amp; Associações</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       TAB 1: Próximas semanas (Feb 24 – Mar 15)
+  ══════════════════════════════════════════════ -->
+  <div id="tab-proximas" class="tab-panel active">
+    <div class="section-title">📅 Próximas Semanas</div>
+    <div class="section-subtitle">24 de fevereiro a 15 de março de 2026 — foco em eventos de networking, tech e negócios</div>
+
+    <!-- TOP PICKS -->
+    <div class="top-picks">
+      <div class="top-picks-header">⭐ TOP 3 PICKS — Para o perfil de Juan</div>
+      <div class="top-picks-grid">
+        <div class="top-pick-item">
+          <div class="pick-name">🥇 BNI Weekly Breakfast</div>
+          <div class="pick-why">Toda semana. Referências de negócios diretas. O melhor ROI de networking em SP para quem vende serviços B2B.</div>
+        </div>
+        <div class="top-pick-item">
+          <div class="pick-name">🥈 Silicon Drinkabout SP</div>
+          <div class="pick-why">Última sexta do mês. Informal, cheio de founders e devs. Ótimo para parcerias técnicas e prospects tech-friendly.</div>
+        </div>
+        <div class="top-pick-item">
+          <div class="pick-name">🥉 GDG São Paulo Meetup</div>
+          <div class="pick-why">Mensal. Comunidade de devs. Posicionar a WeDevUp como referência técnica e captar devs para projetos.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="events-list">
+
+      <!-- ───── Week of Feb 24 ───── -->
+      <div class="month-header">
+        <span class="month-label">Semana de 24 fev</span>
+        <div class="month-line"></div>
+      </div>
+
+      <div class="event-card highlight">
+        <div class="event-header">
+          <div>
+            <div class="event-date">⟳ Toda Semana — Próxima: Ter 24 fev, 7h30</div>
+            <div class="event-title">BNI — Reunião Semanal de Networking</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-premium">Membro</span>
+            <span class="type-badge">Referências</span>
+          </div>
+        </div>
+        <div class="event-desc">Café da manhã semanal de networking estruturado — cada membro apresenta o negócio em 60s e dá/recebe referências qualificadas. Exclusivo: 1 profissional por categoria por grupo.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span>Vários locais — Itaim, Pinheiros, Vila Olímpia, Paulista. <strong>Confirmar grupo mais próximo.</strong></span></div>
+          <div class="meta-item"><span>⏰</span><span>Toda terça/quarta, <strong>7h00 – 9h00</strong></span></div>
+          <div class="meta-item"><span>👥</span><span>Empresários locais, donos de PME, profissionais liberais — <strong>seus compradores de serviços de tech/AI</strong></span></div>
+          <div class="meta-item"><span>💰</span><span>Visita grátis (1x). Anuidade: <strong>~R$3.000–R$4.500/ano</strong></span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+            <span class="star-label">4★ para vendas B2B / 2★ para geeks</span>
+          </div>
+          <a href="https://bnibrasil.net.br/pt-BR/find_a_chapter" target="_blank" class="event-link">🔗 Encontrar grupo BNI →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">Qua 25 fev — 19h00</div>
+            <div class="event-title">Cubo Itaú — Meetup / Talk (confirmar programação)</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-free">Grátis</span>
+            <span class="type-badge">Startup</span>
+          </div>
+        </div>
+        <div class="event-desc">O Cubo realiza eventos técnicos e de negócios quase semanalmente. Verifique a agenda em cubo.network/agenda para o evento desta semana.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span><strong>Cubo Itaú</strong> — Rua Tamoios 246, Itaim Bibi</span></div>
+          <div class="meta-item"><span>👥</span><span>Founders, investidores, heads de inovação de grandes empresas</span></div>
+          <div class="meta-item"><span>💰</span><span><strong>Grátis</strong> (inscrição antecipada recomendada)</span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+            <span class="star-label">4★ — ecossistema startup de alto nível</span>
+          </div>
+          <a href="https://cubo.network/agenda" target="_blank" class="event-link">🔗 Ver agenda Cubo →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">Sex 27 fev — 19h00 (última sexta do mês)</div>
+            <div class="event-title">🍺 Silicon Drinkabout São Paulo</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-free">Grátis</span>
+            <span class="type-badge">Informal</span>
+          </div>
+        </div>
+        <div class="event-desc">Happy hour informal para founders, devs e gente de tech. Sem agenda, sem pitch — só networking genuíno entre cerveja e papo de startup. Acontece toda última sexta do mês.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span>Bar na região de <strong>Vila Madalena / Pinheiros</strong> (local varia — confirmar no Meetup ou Twitter)</span></div>
+          <div class="meta-item"><span>⏰</span><span>Toda última sexta do mês, <strong>19h+</strong></span></div>
+          <div class="meta-item"><span>👥</span><span>Devs, founders early-stage, VCs junior, designers — parceiros técnicos</span></div>
+          <div class="meta-item"><span>💰</span><span><strong>Grátis</strong> (paga seu drink)</span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+            <span class="star-label">4★ para parceiros / 3★ para prospects diretos</span>
+          </div>
+          <a href="https://www.meetup.com/silicon-drinkabout-sao-paulo/" target="_blank" class="event-link">🔗 Meetup Silicon Drinkabout →</a>
+        </div>
+      </div>
+
+      <!-- ───── Week of Mar 2 ───── -->
+      <div class="month-header">
+        <span class="month-label">Semana de 2 mar</span>
+        <div class="month-line"></div>
+      </div>
+
+      <div class="event-card highlight">
+        <div class="event-header">
+          <div>
+            <div class="event-date">⟳ Ter 3 mar — 7h30</div>
+            <div class="event-title">BNI — Reunião Semanal de Networking</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-premium">Membro</span>
+            <span class="type-badge">Referências</span>
+          </div>
+        </div>
+        <div class="event-desc">Segunda semana no BNI. Se você for visitante, é a segunda visita (última antes de precisar se filiar). Se já for membro, mais uma rodada de referências. Prepare um "Educational Moment" sobre AI agents.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span>Grupo BNI escolhido (Itaim / Pinheiros)</span></div>
+          <div class="meta-item"><span>💰</span><span>Visita: <strong>Grátis</strong></span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+            <span class="star-label">4★ vendas B2B</span>
+          </div>
+          <a href="https://bnibrasil.net.br/pt-BR/find_a_chapter" target="_blank" class="event-link">🔗 Encontrar grupo BNI →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">Qui 5 mar — 19h00 (mensal — confirmar data)</div>
+            <div class="event-title">ProductTank São Paulo — Meetup de Produto</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-free">Grátis</span>
+            <span class="type-badge">Produto</span>
+          </div>
+        </div>
+        <div class="event-desc">Comunidade de Product Managers com talks e networking. Boa oportunidade de posicionar WeDevUp como agência que entende de produto, não só desenvolvimento.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span>Escritórios de empresas tech em <strong>Faria Lima / Itaim</strong> (local varia)</span></div>
+          <div class="meta-item"><span>⏰</span><span>Mensal — geralmente 1ª ou 2ª quinta do mês</span></div>
+          <div class="meta-item"><span>👥</span><span>PMs de startups e grandes empresas — tomadores de decisão de produto/tech</span></div>
+          <div class="meta-item"><span>💰</span><span><strong>Grátis</strong></span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+            <span class="star-label">3★ — perfil técnico, poucos decisores de compra</span>
+          </div>
+          <a href="https://www.meetup.com/producttank-sao-paulo/" target="_blank" class="event-link">🔗 ProductTank Meetup →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">Qui 5 mar — 18h00 (mensal — confirmar data)</div>
+            <div class="event-title">GDG São Paulo — Meetup de Devs</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-free">Grátis</span>
+            <span class="type-badge">Comunidade Dev</span>
+          </div>
+        </div>
+        <div class="event-desc">Encontro mensal do Google Developer Group SP. Topics: Android, Flutter, Cloud, AI/ML, Firebase. Boa plataforma para dar talks sobre AI agents e captar devs freelancers.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span>Google Brasil, iFood ou empresa patrocinadora — <strong>Berrini / Faria Lima</strong></span></div>
+          <div class="meta-item"><span>⏰</span><span>Mensal (5ª quinzena) — <strong>confirmar no Meetup ou gdg.community.dev</strong></span></div>
+          <div class="meta-item"><span>👥</span><span>Devs, tech leads, engenheiros de software — potenciais parceiros/subcontratados</span></div>
+          <div class="meta-item"><span>💰</span><span><strong>Grátis</strong></span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+            <span class="star-label">3★ para hiring / 2★ para prospects</span>
+          </div>
+          <a href="https://gdg.community.dev/gdg-sao-paulo/" target="_blank" class="event-link">🔗 GDG SP Community →</a>
+        </div>
+      </div>
+
+      <!-- ───── Week of Mar 9 ───── -->
+      <div class="month-header">
+        <span class="month-label">Semana de 9 mar</span>
+        <div class="month-line"></div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">⟳ Ter 10 mar — 7h30</div>
+            <div class="event-title">BNI — Reunião Semanal de Networking</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-premium">Membro</span>
+            <span class="type-badge">Referências</span>
+          </div>
+        </div>
+        <div class="event-desc">Semana 3 no BNI. Se já for membro: apresente casos de uso de AI para PMEs (automação de atendimento, agentes de vendas). Gere curiosidade. Referências virão.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>💰</span><span>Membro: incluído na anuidade</span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+            <span class="star-label">4★ para vendas B2B</span>
+          </div>
+          <a href="https://bnibrasil.net.br/pt-BR/find_a_chapter" target="_blank" class="event-link">🔗 BNI Brasil →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">Mar 11–13 — (mensal — confirmar data)</div>
+            <div class="event-title">Cubo Itaú — Demo Day / Mentoria Aberta</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-free">Grátis</span>
+            <span class="type-badge">Startup / Investimento</span>
+          </div>
+        </div>
+        <div class="event-desc">Eventos frequentes no Cubo: demo days de aceleradoras, painéis de inovação corporativa, meetups de vertical (fintech, healthtech, agritech). Verificar agenda cubo.network para essa semana.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span><strong>Cubo Itaú</strong> — Rua Tamoios 246, Itaim Bibi</span></div>
+          <div class="meta-item"><span>👥</span><span>Investidores anjo, VCs, heads de inovação de bancos/seguradoras/varejo</span></div>
+          <div class="meta-item"><span>💰</span><span><strong>Grátis</strong></span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+            <span class="star-label">5★ — acesso ao core do ecossistema SP</span>
+          </div>
+          <a href="https://cubo.network/agenda" target="_blank" class="event-link">🔗 Agenda Cubo →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">Qui 12 mar — (mensal — confirmar data)</div>
+            <div class="event-title">Endeavor — Mentoria / Encontro Scale-Up SP</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-paid">Pago</span>
+            <span class="type-badge">Empreendedorismo</span>
+          </div>
+        </div>
+        <div class="event-desc">A Endeavor realiza eventos mensais para empreendedores de alto impacto. Scale-Up é o programa para empresas em crescimento. Mentorias com executivos seniores e founders de referência.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span>Escritório Endeavor — <strong>Pinheiros</strong> ou online</span></div>
+          <div class="meta-item"><span>👥</span><span>Empreendedores de alto impacto, CEOs em crescimento — <strong>potenciais clientes enterprise</strong></span></div>
+          <div class="meta-item"><span>💰</span><span>Alguns eventos <strong>gratuitos</strong>, programa Scale-Up é seletivo</span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+            <span class="star-label">4★ — rede de qualidade, empresa em escala</span>
+          </div>
+          <a href="https://endeavor.org.br/eventos/" target="_blank" class="event-link">🔗 Eventos Endeavor →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div>
+            <div class="event-date">Sex 13 mar — 19h00 (mensal — confirmar)</div>
+            <div class="event-title">ABStartups — Meetup SP</div>
+          </div>
+          <div class="event-badges">
+            <span class="cost-badge cost-free">Grátis</span>
+            <span class="type-badge">Associação</span>
+          </div>
+        </div>
+        <div class="event-desc">A Associação Brasileira de Startups realiza eventos periódicos para o ecossistema. Boa forma de se conectar com founders, aceleradoras e programas de apoio.</div>
+        <div class="event-meta">
+          <div class="meta-item"><span>📍</span><span>São Paulo — local varia. Verificar <strong>abstartups.org</strong></span></div>
+          <div class="meta-item"><span>👥</span><span>Founders early-stage, aceleradoras, investidores anjo</span></div>
+          <div class="meta-item"><span>💰</span><span><strong>Grátis</strong> para eventos públicos</span></div>
+        </div>
+        <div class="event-footer">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+            <span class="star-label">3★ — mais early-stage do que PMEs</span>
+          </div>
+          <a href="https://abstartups.org" target="_blank" class="event-link">🔗 ABStartups →</a>
+        </div>
+      </div>
+
+    </div><!-- /events-list -->
+  </div><!-- /tab-proximas -->
+
+
+  <!-- ══════════════════════════════════════════════
+       TAB 2: Agenda 2026 — Por Mês
+  ══════════════════════════════════════════════ -->
+  <div id="tab-agenda2026" class="tab-panel">
+    <div class="section-title">📆 Visão Geral 2026</div>
+    <div class="section-subtitle">Calendário mês a mês — eventos confirmados + recorrentes + "fique de olho"</div>
+
+    <div class="top-picks">
+      <div class="top-picks-header">⭐ TOP 3 PICKS — Eventos do ano para não perder</div>
+      <div class="top-picks-grid">
+        <div class="top-pick-item">
+          <div class="pick-name">🥇 Startup Summit (Jun/Jul)</div>
+          <div class="pick-why">Maior festival de inovação do Brasil. ~70k pessoas. Essencial para visibilidade, parceiros e prospects de todos os setores.</div>
+        </div>
+        <div class="top-pick-item">
+          <div class="pick-name">🥈 Campus Party Brasil (Fev/Mar)</div>
+          <div class="pick-why">Evento massivo de tech e inovação. Ótimo para posicionar a WeDevUp como referência em AI e captar leads.</div>
+        </div>
+        <div class="top-pick-item">
+          <div class="pick-name">🥉 Fórum Endeavor SP (Out)</div>
+          <div class="pick-why">Concentra os empreendedores mais relevantes do Brasil. Networking de altíssimo nível com decisores.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="cal-table">
+        <thead>
+          <tr>
+            <th>Mês</th>
+            <th>Evento</th>
+            <th>Tipo</th>
+            <th>Por que ir</th>
+            <th>Custo est.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cal-month">Jan 26</td>
+            <td class="cal-event">BNI — Reuniões semanais (⟳ toda semana)</td>
+            <td><span class="cal-type cost-badge cost-premium">Membro</span></td>
+            <td class="cal-why">Referências semanais de clientes B2B. ROI constante.</td>
+            <td class="cal-cost">~R$350/mês</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Jan 26</td>
+            <td class="cal-event">Silicon Drinkabout SP (última sexta)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Kick-off do ano no ecossistema tech informal de SP.</td>
+            <td class="cal-cost">Grátis</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Fev 26</td>
+            <td class="cal-event">Campus Party Brasil 2026 (data ~fev, confirmar)</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Maior evento de tech do Brasil. Visibilidade massiva, parcerias, leads qualificados. Ter booth ou dar palestra.</td>
+            <td class="cal-cost">R$300–R$800 ingresso</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Fev 26</td>
+            <td class="cal-event">GDG SP Meetup (mensal)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Comunidade de devs — networking técnico, potencial de contratar ou se posicionar como especialista em AI.</td>
+            <td class="cal-cost">Grátis</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Fev 26</td>
+            <td class="cal-event">ProductTank SP (mensal)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">PMs de empresas tech. Vender expertise de produto digital + AI.</td>
+            <td class="cal-cost">Grátis</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Mar 26</td>
+            <td class="cal-event">ABStartups — Startup Day SP (confirmar)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Evento da associação para founders — parcerias com startups que precisam de dev/AI.</td>
+            <td class="cal-cost">Grátis a R$200</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Mar 26</td>
+            <td class="cal-event">Cubo Itaú — Eventos mensais (⟳ freq. semanal)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Agenda rica: fintech, AI, healthtech, inovação corporativa. Acesso ao top do ecossistema.</td>
+            <td class="cal-cost">Grátis</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Abr 26</td>
+            <td class="cal-event">AMCHAM — Business Summit SP (anual, confirmar)</td>
+            <td><span class="cal-type cost-badge cost-premium">Premium</span></td>
+            <td class="cal-why">Executivos de multinacionais e grandes empresas — excelentes compradores de soluções de AI/automação enterprise.</td>
+            <td class="cal-cost">R$500–R$2.000</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Abr 26</td>
+            <td class="cal-event">Endeavor Scale-Up SP — Encontro trimestral</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Rede de empreendedores de alto crescimento. Clientes potenciais e parceiros estratégicos.</td>
+            <td class="cal-cost">Programa seletivo</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Abr 26</td>
+            <td class="cal-event">ACSP — Fórum Empresarial (confirmar)</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Empresários tradicionais de SP — grande oportunidade de vender AI para PMEs que ainda "não sabem que precisam".</td>
+            <td class="cal-cost">R$150–R$400</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Mai 26</td>
+            <td class="cal-event">Plug and Play SP — Batch Demo Day (trimestral)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Demo day da aceleradora. Startups apresentam para corporates — rede de inovação de grandes empresas.</td>
+            <td class="cal-cost">Grátis (convidado)</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Mai 26</td>
+            <td class="cal-event">Liga Ventures — Fórum de Inovação (semestral)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Conecta startups com grandes corporações. WeDevUp pode ser fornecedora de inovação para corporates.</td>
+            <td class="cal-cost">Grátis / R$300</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Mai 26</td>
+            <td class="cal-event">SaaStr Brasil / SaaS SP Meetup (confirmar)</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Comunidade SaaS — outros founders de SaaS. Parcerias, co-vendas, benchmarking.</td>
+            <td class="cal-cost">R$300–R$600</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Jun 26</td>
+            <td class="cal-event">🎯 Startup Summit 2026 (Florianópolis/online)</td>
+            <td><span class="cal-type cost-badge cost-premium">Premium</span></td>
+            <td class="cal-why">Maior festival de inovação do BR (~70k pessoas). Palestrantes internacionais, investidores, mídia. Ir como expositor ou palestrante.</td>
+            <td class="cal-cost">R$500–R$1.500</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Jun 26</td>
+            <td class="cal-event">LIDE SP — Jantar de Negócios (mensal)</td>
+            <td><span class="cal-type cost-badge cost-premium">Premium</span></td>
+            <td class="cal-why">Grupo de Líderes Empresariais. CEOs e presidentes de grandes empresas — melhor rede de negócios de alto nível de SP.</td>
+            <td class="cal-cost">R$3.000–R$6.000/ano membro</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Jul 26</td>
+            <td class="cal-event">BrazilJS / JS Summit SP (confirmar)</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Maior conf de JavaScript do BR. Posicionamento técnico, recruiting, parceiros de dev.</td>
+            <td class="cal-cost">R$300–R$800</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Jul 26</td>
+            <td class="cal-event">DevSampa (confirmar)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Conferência local de devs SP — boa para dar palestra e se posicionar como autoridade em AI/automação.</td>
+            <td class="cal-cost">Grátis</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Ago 26</td>
+            <td class="cal-event">Google for Startups — AI Program (online + SP)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Programa de aceleração com foco em AI. Acesso a créditos Google Cloud, mentores e rede de founders de AI.</td>
+            <td class="cal-cost">Grátis (processo seletivo)</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Ago 26</td>
+            <td class="cal-event">AMCHAM — Tech &amp; Innovation Forum (confirmar)</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Executivos de tech de multinacionais. Vendas de projetos de transformação digital e AI.</td>
+            <td class="cal-cost">R$400–R$1.000</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Set 26</td>
+            <td class="cal-event">RD Summit (Florianópolis) — confirmar</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Maior evento de marketing digital/vendas do BR. Prospects de agências e empresas querendo automação de marketing.</td>
+            <td class="cal-cost">R$800–R$2.000</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Set 26</td>
+            <td class="cal-event">ABRADi-SP — Congresso de Agências Digitais</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Associação de agências digitais. Benchmarking de mercado, parcerias entre agências, trends de AI em agências.</td>
+            <td class="cal-cost">R$200–R$500</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Out 26</td>
+            <td class="cal-event">🎯 Fórum Endeavor SP (anual)</td>
+            <td><span class="cal-type cost-badge cost-premium">Premium</span></td>
+            <td class="cal-why">O networking mais qualificado do ecossistema empreendedor brasileiro. CEOs de empresas de R$50M–R$500M+ de faturamento.</td>
+            <td class="cal-cost">R$1.500–R$3.000</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Out 26</td>
+            <td class="cal-event">Plug and Play SP — Batch Demo Day (trimestral)</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">Acesso à rede corporativa da Plug and Play (Bradesco, Raízen, Rabobank, etc).</td>
+            <td class="cal-cost">Grátis (convidado)</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Nov 26</td>
+            <td class="cal-event">Semana do Empreendedorismo ACSP / SEBRAE-SP</td>
+            <td><span class="cal-type cost-badge cost-free">Grátis</span></td>
+            <td class="cal-why">PMEs tradicionais — audiência ideal para vender AI e automação para quem nunca pensou nisso.</td>
+            <td class="cal-cost">Grátis a R$200</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Nov 26</td>
+            <td class="cal-event">Web Summit Lisboa (opcional)</td>
+            <td><span class="cal-type cost-badge cost-premium">Premium</span></td>
+            <td class="cal-why">Maior evento de tech do mundo. Se quiser visibilidade internacional para WeDevUp e SaaS.</td>
+            <td class="cal-cost">€1.000–€2.000 + viagem</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Dez 26</td>
+            <td class="cal-event">BNI Gala / Confraternização anual</td>
+            <td><span class="cal-type cost-badge cost-premium">Membro</span></td>
+            <td class="cal-why">Consolidar relações no grupo BNI antes do ano novo. Apresentar resultados do ano.</td>
+            <td class="cal-cost">Incluído na anuidade</td>
+          </tr>
+          <tr>
+            <td class="cal-month">Dez 26</td>
+            <td class="cal-event">Jantar de Fim de Ano — redes e grupos que você entrou</td>
+            <td><span class="cal-type cost-badge cost-paid">Pago</span></td>
+            <td class="cal-why">Todos os grupos (Rotary, EO, BNI, ACSP) fazem eventos de confraternização — high ROI de relacionamento.</td>
+            <td class="cal-cost">R$100–R$300</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 20px; padding: 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;">
+      <p style="font-size: 0.8rem; color: var(--text-muted);">
+        <strong style="color: var(--text);">⟳ Eventos recorrentes (toda semana/mês):</strong> BNI (semanal), Silicon Drinkabout (mensal, última sexta), GDG SP (mensal), ProductTank SP (mensal), Cubo Itaú eventos (quase semanal), LIDE jantares (mensal).<br><br>
+        <strong style="color: var(--text);">Confirmar datas:</strong> todos os eventos marcados como "confirmar" devem ser verificados nos sites oficiais. Datas podem mudar em função de feriados e disponibilidade de espaço.
+      </p>
+    </div>
+  </div><!-- /tab-agenda2026 -->
+
+
+  <!-- ══════════════════════════════════════════════
+       TAB 3: Grupos & Associações
+  ══════════════════════════════════════════════ -->
+  <div id="tab-grupos" class="tab-panel">
+    <div class="section-title">🤝 Grupos &amp; Associações para Entrar</div>
+    <div class="section-subtitle">Comunidades permanentes — não só eventos pontuais. Onde Juan deve estar presente em 2026.</div>
+
+    <div class="top-picks">
+      <div class="top-picks-header">⭐ TOP 3 PICKS — Maior retorno para WeDevUp</div>
+      <div class="top-picks-grid">
+        <div class="top-pick-item">
+          <div class="pick-name">🥇 BNI — Entrar em um grupo agora</div>
+          <div class="pick-why">Único grupo onde CADA semana alguém te indica para um potencial cliente. ROI de networking mais comprovado do Brasil para serviços B2B.</div>
+        </div>
+        <div class="top-pick-item">
+          <div class="pick-name">🥈 Cubo Itaú — Community Pass</div>
+          <div class="pick-why">Acesso ao hub mais relevante de startups e inovação de SP. Networking com founders, investidores e inovação corporativa toda semana.</div>
+        </div>
+        <div class="top-pick-item">
+          <div class="pick-name">🥉 AMCHAM ou ACSP — Associar-se</div>
+          <div class="pick-why">Empresas estabelecidas com budget para tech. São exatamente os clientes que ainda não sabem que precisam de AI — e têm dinheiro para pagar.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="groups-list">
+
+      <div class="group-card highlight">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🤝</div>
+            <div class="group-title">BNI — Business Network International</div>
+            <div class="group-tagline">A maior organização de networking de referências do mundo</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Grupos semanais de ~30 empresários locais. 1 profissional por categoria. Reunião toda terça/quarta, 7h–9h. Todos se referem clientes mutuamente.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val"><strong>PMEs com budget</strong>: contadores, advogados, consultores, donos de restaurante, clínicas, imobiliárias. Exatamente quem Juan quer convencer a usar AI.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Visite 1–2x gratuitamente qualquer grupo. Anuidade: <strong>~R$3.500–R$4.500/ano</strong> + mensalidade de reunião (~R$60). Processo de candidatura (entrevistas).</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Toda semana (obrigatoriedade de presença ~80%). Alto comprometimento, alto retorno.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Em 2024, membros brasileiros geraram <strong>R$2,5 bilhões em negócios</strong>. 1 projeto de AI automação vendido já paga o ano todo. Categoria "Tecnologia / AI" provavelmente está vaga.</div>
+          </div>
+        </div>
+        <a href="https://bnibrasil.net.br/pt-BR/find_a_chapter" target="_blank" class="group-link">🔗 Encontrar grupo BNI em SP →</a>
+      </div>
+
+      <div class="group-card highlight">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🟣</div>
+            <div class="group-title">Cubo Itaú — Community</div>
+            <div class="group-tagline">O hub de startups mais relevante de São Paulo</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Hub de inovação do Itaú em Itaim Bibi. Startups residentes + comunidade aberta. Eventos quase diários de tech, AI, fintech, negócios.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Founders de startups Series A–B, VCs (Softbank, Kaszek, Canary), heads de inovação de Itaú/Bradesco/B3/grandes corporates.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Eventos abertos: <strong>grátis</strong> (inscrição online). Community Pass / coworking: contato pelo cubo.network. Residência: processo seletivo para startups.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Eventos quase semanais. Ir pelo menos 1–2x por mês.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Acesso direto a founders com budget para tecnologia. Posicionar WeDevUp como o "dev team" das startups do Cubo. Alto nível de conversas.</div>
+          </div>
+        </div>
+        <a href="https://cubo.network" target="_blank" class="group-link">🔗 cubo.network →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🏛️</div>
+            <div class="group-title">ACSP — Associação Comercial de SP</div>
+            <div class="group-tagline">A mais tradicional associação empresarial de SP (fundada 1894)</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Associação empresarial com 130 anos. Eventos, capacitação, defesa empresarial, networking com empresários tradicionais do comércio e indústria.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Donos de negócios tradicionais de SP (varejo, serviços, indústria) — <strong>exatamente quem precisa de AI e ainda não sabe</strong>.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Associação: ~<strong>R$200–R$500/mês</strong> dependendo do porte da empresa. Muitos eventos abertos ao público.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Eventos mensais, câmaras setoriais, comitês temáticos.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Audiência "não-tech" com budget. O empresário do varejo que ainda usa planilha Excel é o prospect perfeito para vender automação de WhatsApp e AI agents.</div>
+          </div>
+        </div>
+        <a href="https://www.acsp.com.br" target="_blank" class="group-link">🔗 acsp.com.br →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🇺🇸</div>
+            <div class="group-title">AMCHAM — American Chamber of Commerce</div>
+            <div class="group-tagline">Câmara de Comércio Americana em São Paulo</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">A câmara bilateral mais ativa do Brasil. Eventos de alto nível, câmaras setoriais (tech, sustentabilidade, RH), almoços executivos.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Executivos seniores de multinacionais (Google, Microsoft, Accenture, grandes bancos), diretores de TI e transformação digital — <strong>compradores de AI enterprise</strong>.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Associação: <strong>R$3.000–R$8.000/ano</strong> (depende do tipo de membro). Muitos eventos pagos abertos para não-membros.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Eventos semanais nas câmaras. Grandes fóruns anuais.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Acesso a tomadores de decisão de tech em empresas com orçamento para projetos de R$100k+. Potencialmente o maior deal size de qualquer grupo desta lista.</div>
+          </div>
+        </div>
+        <a href="https://amcham.com.br" target="_blank" class="group-link">🔗 amcham.com.br →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🚀</div>
+            <div class="group-title">Endeavor Brasil — Rede Scale-Up</div>
+            <div class="group-tagline">Organização de empreendedorismo de alto impacto</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Programa Scale-Up seleciona empresas com crescimento acelerado para mentorias, mastermind e eventos exclusivos com mentores top.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Fundadores de empresas crescendo 30%+ ao ano. CEOs e empreendedores de médio porte. Rede de mentores (ex-Googlers, fundadores de unicórnios).</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Inscrição no <strong>Scale-Up Endeavor</strong>: processo seletivo (empresa precisa ter alguns anos e crescimento comprovado). Gratuito para selecionados. Eventos abertos também disponíveis.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Eventos mensais/trimestrais para selecionados. Agenda pública no site.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Com 6+ anos de agência, Juan já tem histórico. Se aprovado, acesso à melhor rede de empreendedores do Brasil e visibilidade para o SaaS em construção.</div>
+          </div>
+        </div>
+        <a href="https://endeavor.org.br/scale-up/" target="_blank" class="group-link">🔗 Endeavor Scale-Up →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🌱</div>
+            <div class="group-title">ABStartups — Associação Brasileira de Startups</div>
+            <div class="group-tagline">A principal associação do ecossistema startup brasileiro</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Representa o ecossistema de startups junto ao governo e grandes empresas. Eventos, mapeamento de startups, programas de parceria.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Founders early-stage a growth, aceleradoras, investidores anjo, representantes de programas de inovação corporativa.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Associação gratuita básica no site. Planos pagos para mais benefícios. Eventos abertos.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Eventos mensais. Startup Day anual. Mapa de startups com acesso contínuo.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Parceiros de dev: startups sem equipe técnica procuram exatamente agências como a WeDevUp. Boa fonte de projetos recorrentes.</div>
+          </div>
+        </div>
+        <a href="https://abstartups.org" target="_blank" class="group-link">🔗 abstartups.org →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🔵</div>
+            <div class="group-title">Google for Startups — Programa AI</div>
+            <div class="group-tagline">Aceleração e comunidade de founders de AI no Brasil</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Programa global do Google para startups usando AI. Oferece créditos no Google Cloud (até US$100k+), acesso a engenheiros do Google, mentoria e rede global.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Founders de AI/ML no Brasil e globalmente. Alumni de programas anteriores. Equipe de Google para Startups com acesso a produto e parcerias.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Inscrição online: <strong>goo.gle/startups</strong>. Processo seletivo. Totalmente <strong>gratuito</strong> para aprovados (mais os créditos de cloud).</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Turmas a cada 6 meses. Duração: 3–6 meses de programa. Comunidade permanente de alumni.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Se o SaaS de AI tiver tração mínima, aplicar já. Créditos de cloud + network do Google + validação de marca para clientes. Potencial de ser "acelerado pelo Google".</div>
+          </div>
+        </div>
+        <a href="https://startup.google.com/intl/pt-BR/" target="_blank" class="group-link">🔗 Google for Startups →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">📱</div>
+            <div class="group-title">ABRADi-SP — Agências Digitais</div>
+            <div class="group-tagline">Associação Brasileira de Agências Digitais — Seção SP</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Representa o mercado de agências digitais no Brasil. Benchmarks de mercado, capacitação, comitês de AI/automação, networking entre donos de agência.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Donos de outras agências digitais (parceiros potenciais, co-venda), executivos de grandes agências (prospects para serviços especializados de dev).</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Associação: <strong>~R$150–R$600/mês</strong> dependendo do faturamento. Formulário no site abradi.com.br.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Comitês mensais, congresso anual em setembro, webinars frequentes.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Parceria com agências de marketing que precisam de braço de dev. WeDevUp como "tech partner" de agências menores. Canal de vendas indireto.</div>
+          </div>
+        </div>
+        <a href="https://abradi.com.br" target="_blank" class="group-link">🔗 abradi.com.br →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🏆</div>
+            <div class="group-title">EO São Paulo — Entrepreneurs' Organization</div>
+            <div class="group-tagline">Organização global de empreendedores com faturamento mínimo</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Organização peer-to-peer de empreendedores. Reuniões mensais de Forum (grupo de 6–8), eventos locais e globais. Confidencialidade total no Forum.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Empresários com mínimo de <strong>US$1M de faturamento anual</strong>. Alta qualidade de rede — decisores com orçamento real.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Requisito: empresa com R$3M+/ano faturamento (comprovado). Anuidade: <strong>~US$3.000–5.000/ano</strong>. Candidatura + aprovação dos membros. Contato: eonetwork.org/brazil</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Forum mensal (obrigatório). Eventos locais mensais. MyEO capítulos temáticos.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">A melhor rede de empreendedores sérios do mundo. Se WeDevUp atende o requisito de faturamento, é o maior ROI de networking a longo prazo. Membros compram entre si.</div>
+          </div>
+        </div>
+        <a href="https://www.eonetwork.org/sao-paulo" target="_blank" class="group-link">🔗 EO São Paulo →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🔑</div>
+            <div class="group-title">LIDE SP — Grupo de Líderes Empresariais</div>
+            <div class="group-tagline">Rede de líderes empresariais de alto nível no Brasil</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Liderado por João Doria Jr. Jantares mensais com CEOs e presidentes de grandes empresas brasileiras. Debates sobre economia e política empresarial.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">CEOs do Ibovespa, presidentes de federações, executivos C-level de grandes grupos — <strong>compradores de projetos enterprise de AI</strong>.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Indicação por membro. Anuidade: <strong>R$5.000–R$15.000/ano</strong>. Contato via lide.com.br para saber critérios atuais.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Jantares mensais, fóruns nacionais e internacionais.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Se tiver um contato que indique: acesso ao maior deal size possível. Um único projeto para uma empresa do LIDE pode valer R$200k+.</div>
+          </div>
+        </div>
+        <a href="https://lide.com.br" target="_blank" class="group-link">🔗 lide.com.br →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">⚙️</div>
+            <div class="group-title">Plug and Play SP — Startup Ecosystem</div>
+            <div class="group-tagline">Aceleradora global com hub em São Paulo</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Hub de inovação de Silicon Valley com operação em SP. Conecta startups com corporações (Bradesco, Raízen, Rabobank, etc.) para projetos de inovação e PoC.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Startups em batch de aceleração + times de inovação corporativa de grandes empresas brasileiras.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Demo days abertos (grátis, por convite). Candidatura ao programa de aceleração se for transformar WeDevUp em produto/SaaS.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Demo days trimestrais. Meetups mensais.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Acesso a grandes corporações que pagam por projetos de AI. Demonstrar WeDevUp como implementador de PoCs de automação para inovação corporativa.</div>
+          </div>
+        </div>
+        <a href="https://www.plugandplaytechcenter.com/brazil/" target="_blank" class="group-link">🔗 Plug and Play Brasil →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">⚽</div>
+            <div class="group-title">Rotary Club São Paulo</div>
+            <div class="group-tagline">Organização de serviço com networking empresarial forte</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Organização de serviço (filantropia + networking). Almoços semanais com empresários locais, profissionais liberais e executivos de médio porte.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Empresários estabelecidos, profissionais liberais (médicos, advogados, contadores), executivos de médio porte — PME com budget.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Indicação por membro ativo. Anuidade: <strong>~R$200–R$500/mês</strong>. Há dezenas de clubes em SP (Rotary Club SP, Rotary Jardins, Rotary Paulistano, etc).</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Almoços semanais (quarta ou sexta). Alto comprometimento de presença.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Perfil não-tech com budget. Diferente do BNI (mais transacional), o Rotary é relacional. Contratos mais lentos mas mais sólidos. <strong>3★ para vendas diretas, 4★ para reputação.</strong></div>
+          </div>
+        </div>
+        <a href="https://rotary.org.br" target="_blank" class="group-link">🔗 Rotary Brasil →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">💬</div>
+            <div class="group-title">Comunidades WhatsApp / Telegram SP</div>
+            <div class="group-tagline">Grupos digitais de empreendedores e tech em SP</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">Grupos recomendados</div>
+            <div class="group-row-val">
+              <strong>• Telegram: Founders SP</strong> — founders early-stage trocando referências<br>
+              <strong>• WhatsApp: BNI grupo do capítulo</strong> — networking diário entre reuniões<br>
+              <strong>• Telegram: StartupSP Comunidade</strong> — ecossistema geral<br>
+              <strong>• LinkedIn: grupos de AI no Brasil</strong> — prospects e visibilidade<br>
+              <strong>• Slack/Discord: comunidades dev brasileiras</strong> — dev.to BR, Tabnews, etc.
+            </div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar</div>
+            <div class="group-row-val">Pedir link nos eventos presenciais (BNI, Cubo, GDG) ou procurar no Telegram por "empreendedores São Paulo" / "founders SP". Grupos mudam muito — perguntar nos eventos.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Baixo custo, alto alcance. Boa para acompanhar tendências, postar conteúdo sobre AI e aparecer quando alguém precisar de dev/automação.</div>
+          </div>
+        </div>
+        <a href="https://t.me/s/founderssp" target="_blank" class="group-link">🔗 Explorar grupos →</a>
+      </div>
+
+      <div class="group-card">
+        <div class="group-header">
+          <div>
+            <div class="group-emoji">🌐</div>
+            <div class="group-title">Liga Ventures — Inovação Corporativa</div>
+            <div class="group-tagline">Ponte entre startups e grandes corporações brasileiras</div>
+          </div>
+          <div class="group-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">☆</span>
+          </div>
+        </div>
+        <div class="group-body">
+          <div class="group-row">
+            <div class="group-row-label">O que é</div>
+            <div class="group-row-val">Gestora de inovação aberta. Conecta startups com grandes grupos (Votorantim, Bunge, Raia Drogasil, etc.) para PoCs e contratos.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Quem está lá</div>
+            <div class="group-row-val">Times de inovação de grandes corporações brasileiras buscando tecnologia (AI, automação, dados). <strong>Compradores enterprise de alto ticket.</strong></div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Como entrar + custo</div>
+            <div class="group-row-val">Cadastrar WeDevUp como fornecedor/startup no portal ligaventures.com.br. Participar dos Demo Days (gratuitos ou por convite). Inscrever em programas de inovação patrocinados por corporates.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Frequência</div>
+            <div class="group-row-val">Fóruns semestrais + programas contínuos com corporações parceiras.</div>
+          </div>
+          <div class="group-row">
+            <div class="group-row-label">Por que vale para WeDevUp</div>
+            <div class="group-row-val">Canal direto para vender projetos de AI/automação para grandes grupos. Um PoC bem feito pode virar contrato de R$200k+.</div>
+          </div>
+        </div>
+        <a href="https://ligaventures.com.br" target="_blank" class="group-link">🔗 Liga Ventures →</a>
+      </div>
+
+    </div><!-- /groups-list -->
+  </div><!-- /tab-grupos -->
+
+</div><!-- /tabs-container -->
+
+<!-- ─── Footer ─── -->
+<footer class="footer">
+  <div class="footer-note">
+    Feito para <strong>Juan / WeDevUp</strong> — networking + vendas de AI em São Paulo · <a href="index.html">AI Alpha Hub</a>
+  </div>
+  <div class="update-badge">
+    🗓️ Atualizado em: 23 fev 2026 · Próxima atualização: 10 mar 2026
+  </div>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    // deactivate all
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    // activate selected
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+    // scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
