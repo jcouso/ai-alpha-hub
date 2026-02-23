@@ -692,11 +692,11 @@
         font-size: 18px;
       }
       .header-inner {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        align-items: center;
       }
       .header-nav {
-        width: 100%;
-        justify-content: flex-start;
+        display: none;
       }
       .nav-pills {
         display: flex;
@@ -764,23 +764,21 @@
         background: var(--bg-card-hover);
         border-color: var(--accent-border);
       }
-      /* Change 9: Mobile: sticky "Reports" button at bottom */
       .mobile-toggle {
         display: flex;
         align-items: center;
-        gap: 8px;
-        position: fixed;
-        bottom: 16px;
-        right: 16px;
-        z-index: 200;
+        gap: 6px;
         background: #6366f1;
         color: white;
         border-radius: 999px;
-        padding: 12px 20px;
-        font-size: 14px;
+        padding: 8px 14px;
+        font-size: 13px;
         font-weight: 600;
-        box-shadow: 0 4px 20px rgba(99,102,241,0.4);
         border: none;
+        cursor: pointer;
+        font-family: inherit;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
       .mobile-toggle:hover {
         background: #5558e3;
@@ -880,6 +878,10 @@
           <span>Daily signals for builders</span>
         </div>
       </div>
+      <button class="mobile-toggle" id="menuBtn" onclick="toggleSidebar()">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 3h12M1 7h12M1 11h12"/></svg>
+        Reports
+      </button>
       <nav class="header-nav">
         <div class="nav-pills">
           <a href="./networking-agenda-2026.html" class="nav-pill">🤝 Agenda</a>
@@ -914,11 +916,7 @@
     </main>
   </div>
 
-  <!-- Mobile Reports FAB — must be direct child of body, outside any sticky/backdrop context -->
-  <button class="mobile-toggle" id="menuBtn" onclick="toggleSidebar()">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
-    Reports
-  </button>
+
 
   <script>
     const historyEl = document.getElementById('history');
