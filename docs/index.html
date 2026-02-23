@@ -887,10 +887,6 @@
           <a href="./sales-events-2026.html" class="nav-pill">💼 Vendas</a>
         </div>
         <div class="badge" id="report-count">—</div>
-        <button class="mobile-toggle" id="menuBtn" onclick="toggleSidebar()">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
-          Reports
-        </button>
       </nav>
     </div>
   </header>
@@ -917,6 +913,12 @@
       </div>
     </main>
   </div>
+
+  <!-- Mobile Reports FAB — must be direct child of body, outside any sticky/backdrop context -->
+  <button class="mobile-toggle" id="menuBtn" onclick="toggleSidebar()">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+    Reports
+  </button>
 
   <script>
     const historyEl = document.getElementById('history');
