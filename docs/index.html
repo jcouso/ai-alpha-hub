@@ -690,11 +690,17 @@
         font-size: 18px;
       }
       .header-inner {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-items: center;
       }
       .header-nav {
-        display: none;
+        width: 100%;
+        justify-content: flex-start;
+        order: 3;
+      }
+      .logo {
+        order: 1;
+        flex: 1;
       }
       .nav-pills {
         display: flex;
@@ -777,6 +783,7 @@
         font-family: inherit;
         white-space: nowrap;
         flex-shrink: 0;
+        order: 2;
       }
       .mobile-toggle:hover {
         background: #5558e3;
