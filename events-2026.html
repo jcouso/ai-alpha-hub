@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos Tech 2026 — WeDevUp</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #242736;
+      --border: #2e3248;
+      --accent: #6c63ff;
+      --accent2: #00d4aa;
+      --accent3: #ff6b6b;
+      --accent4: #ffd166;
+      --text: #e8eaf0;
+      --muted: #8b8fa8;
+      --green: #00d4aa;
+      --orange: #ffd166;
+      --red: #ff6b6b;
+      --purple: #c084fc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6c63ff, #00d4aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .meta span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: var(--surface2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Highlight box ── */
+    .highlight-box {
+      max-width: 960px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .highlight-inner {
+      background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,212,170,0.08));
+      border: 1px solid rgba(108,99,255,0.4);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+    }
+
+    .highlight-inner h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .highlight-item {
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .highlight-item .ev-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .highlight-item .ev-why {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .highlight-item .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      margin-top: 0.4rem;
+      font-weight: 600;
+    }
+
+    .tag-agency { background: rgba(108,99,255,0.25); color: var(--accent); }
+    .tag-saas   { background: rgba(0,212,170,0.2); color: var(--accent2); }
+    .tag-invest { background: rgba(255,209,102,0.2); color: var(--orange); }
+    .tag-expo   { background: rgba(255,107,107,0.2); color: var(--red); }
+
+    /* ── Tabs ── */
+    .tabs-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      scrollbar-width: none;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex-shrink: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.55rem 1.2rem;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* ── Event Cards ── */
+    .events-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.3rem 1.5rem;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card-date {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent2);
+      background: rgba(0,212,170,0.1);
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .card-location {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-why {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .price-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    .price-free  { background: rgba(0,212,170,0.15); color: var(--accent2); }
+    .price-low   { background: rgba(108,99,255,0.15); color: var(--purple); }
+    .price-mid   { background: rgba(255,209,102,0.15); color: var(--orange); }
+    .price-high  { background: rgba(255,107,107,0.15); color: var(--red); }
+
+    .badge {
+      font-size: 0.73rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+
+    .badge-sponsor { border-color: rgba(255,209,102,0.4); color: var(--orange); }
+    .badge-exhibit { border-color: rgba(255,107,107,0.4); color: var(--red); }
+    .badge-investors { border-color: rgba(0,212,170,0.4); color: var(--accent2); }
+    .badge-agency  { border-color: rgba(108,99,255,0.4); color: var(--purple); }
+    .badge-saas    { border-color: rgba(0,212,170,0.4); color: var(--accent2); }
+    .badge-network { border-color: rgba(255,255,255,0.2); color: var(--muted); }
+
+    .card-link {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    .section-intro {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1.2rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .section-intro strong { color: var(--text); }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .card { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🗓️ Eventos Tech 2026</h1>
+  <p>Guia de eventos para networking, vendas e crescimento — curado para o perfil de Juan (WeDevUp + SaaS)</p>
+  <div class="meta">
+    <span>📅 Atualizado: Fevereiro 2026</span>
+    <span>🎯 Foco: networking • vendas • clientes</span>
+    <span>📍 Base: São Paulo, Brasil</span>
+  </div>
+</header>
+
+<!-- ── HIGHLIGHT BOX ── -->
+<div class="highlight-box">
+  <div class="highlight-inner">
+    <h2>💼 Para vender e fazer networking — Top Picks 2026</h2>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <div class="ev-name">Web Summit Rio</div>
+        <div class="ev-why">8–11 Jun · 600+ investidores, 1.500+ startups</div>
+        <span class="tag tag-agency">🏢 Vender agência</span>
+        <span class="tag tag-invest">💰 Investidores</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">CASE Abstartups</div>
+        <div class="ev-why">Nov · Epicentro do ecossistema BR de startups</div>
+        <span class="tag tag-saas">🚀 Vender SaaS</span>
+        <span class="tag tag-expo">🎪 Expositor</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">RD Summit</div>
+        <div class="ev-why">Nov · Maior evento de marketing e vendas LatAm</div>
+        <span class="tag tag-agency">🏢 Prospects</span>
+        <span class="tag tag-saas">🚀 SaaS B2B</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">SaaStr Annual</div>
+        <div class="ev-why">Ago · A conferência global para founders de SaaS</div>
+        <span class="tag tag-saas">🚀 SaaS global</span>
+        <span class="tag tag-invest">💰 VCs</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">SP Startup Founder 101</div>
+        <div class="ev-why">Mensal · Fundadores e investidores locais</div>
+        <span class="tag tag-agency">🏢 Network SP</span>
+        <span class="tag tag-saas">🚀 Validação</span>
+      </div>
+      <div class="highlight-item">
+        <div class="ev-name">TDC Florianópolis</div>
+        <div class="ev-why">22–24 Jul · CTOs, devs, decisores de tech</div>
+        <span class="tag tag-agency">🏢 Clientes tech</span>
+        <span class="tag tag-expo">🎪 Palestra</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TABS ── -->
+<div class="tabs-wrapper">
+  <div class="tab-nav" role="tablist">
+    <button class="tab-btn active" data-tab="sp" role="tab">🏙️ Local SP</button>
+    <button class="tab-btn" data-tab="nacional" role="tab">🇧🇷 Nacional</button>
+    <button class="tab-btn" data-tab="cross" role="tab">🤝 Cross/Networking</button>
+    <button class="tab-btn" data-tab="global" role="tab">🌍 Global</button>
+  </div>
+
+  <!-- ══════════ TAB 1: LOCAL SP ══════════ -->
+  <div id="tab-sp" class="tab-pane active">
+    <div class="section-intro">
+      <strong>Meetups e eventos em São Paulo</strong> — gratuitos ou baratos, recorrentes, ideais para construir rede local de forma consistente ao longo do ano.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">SP Startup Founder 101 — Meetups Mensais</div>
+          <div class="card-date">Mensal • 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo / Online</div>
+        <div class="card-why">
+          🎯 Sessões com fundadores e investidores (ex: "What Do Investors Really Look For?") — ambiente ideal para apresentar a WeDevUp e validar ideias de SaaS com quem está construindo startups.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-agency">🏢 Vender agência</span>
+          <span class="badge badge-investors">💰 Investidores</span>
+          <a class="card-link" href="https://www.meetup.com/sao-paulo-startup-founder-101/" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">SP Startup: Idea to IPO</div>
+          <div class="card-date">Quinzenal • 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo / Online</div>
+        <div class="card-why">
+          🎯 Networking estilo Silicon Valley com empreendedores de SP — eventos recorrentes como "Build AI Skills for Your Career" e "Silicon Valley Business Networking" atraem founders em early-stage que precisam de dev.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-saas">🚀 SaaS founders</span>
+          <span class="badge badge-agency">🏢 Prospects</span>
+          <a class="card-link" href="https://www.meetup.com/sao-paulo-startup-idea-to-ipo/" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">AIDataTech Connect — Analytics.Club SP</div>
+          <div class="card-date">Mensal • 2026</div>
+        </div>
+        <div class="card-location">📍 Online (base SP)</div>
+        <div class="card-why">
+          🎯 Networking global virtual para profissionais de AI, Data e Tech — bom para conectar com CTOs e PMs de empresas tech que podem virar clientes da agência.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-agency">🏢 CTOs/PMs</span>
+          <span class="badge badge-network">🌐 Global virtual</span>
+          <a class="card-link" href="https://www.meetup.com/ac-gru/" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Elastic SP User Group</div>
+          <div class="card-date">Mensal • 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo (presencial)</div>
+        <div class="card-why">
+          🎯 Encontros presenciais com engenheiros e arquitetos de empresas que usam Elastic/AWS — perfil técnico-decisor que frequentemente terceiriza desenvolvimento especializado.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-agency">🏢 Engenheiros sênior</span>
+          <a class="card-link" href="https://www.meetup.com/sao-paulo-elastic-fantastics/" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Golang SP / Confluent Kafka Meetups</div>
+          <div class="card-date">Mensal • 2026</div>
+        </div>
+        <div class="card-location">📍 São Paulo (presencial)</div>
+        <div class="card-why">
+          🎯 Comunidade técnica ativa — ideal para visibilidade como desenvolvedor/agência e para recrutar devs freelancers. Confluence tem 930+ membros em SP.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-network">🛠️ Comunidade dev</span>
+          <a class="card-link" href="https://www.meetup.com/golangbr/" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">GopherCon LatAm 2026</div>
+          <div class="card-date">Mar 2026 (est.)</div>
+        </div>
+        <div class="card-location">📍 São Paulo</div>
+        <div class="card-why">
+          🎯 Conferência da comunidade Go na América Latina — excelente para visibilidade técnica como agência e para networking com empresas que usam Go em produção.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">~R$200–400</span>
+          <span class="badge badge-agency">🏢 Clientes tech</span>
+          <a class="card-link" href="https://www.meetup.com/golangbr/" target="_blank">golangbr →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 2: NACIONAL ══════════ -->
+  <div id="tab-nacional" class="tab-pane">
+    <div class="section-intro">
+      <strong>Conferências brasileiras</strong> que valem viagem — volume, qualidade de networking e oportunidades de negócio que justificam o investimento de tempo e dinheiro.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Web Summit Rio 2026</div>
+          <div class="card-date">8–11 Jun 2026</div>
+        </div>
+        <div class="card-location">📍 Riocentro, Rio de Janeiro</div>
+        <div class="card-why">
+          🎯 A maior conferência tech da América do Sul — 30.000+ participantes, 600+ investidores, 1.500+ startups. Chance única de conhecer fundadores, CTOs e investidores internacionais num só lugar. Possui opção de <strong>Startup Exhibitor</strong> para visibilidade da WeDevUp.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">~R$1.500–3.000</span>
+          <span class="badge badge-investors">💰 600+ investidores</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <a class="card-link" href="https://rio.websummit.com/" target="_blank">rio.websummit.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">TDC Florianópolis 2026</div>
+          <div class="card-date">22–24 Jul 2026</div>
+        </div>
+        <div class="card-location">📍 CentroSul, Florianópolis, SC</div>
+        <div class="card-why">
+          🎯 A maior conferência de devs do Brasil — trilhas de IA aplicada, arquitetura e produto. Mais de 80% das inscrições são corporativas: público de CTOs, tech leads e gerentes de TI com poder de compra para contratar dev shops. Opção de <strong>palestra/talk</strong> aumenta muito a visibilidade.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">~R$600–1.200</span>
+          <span class="badge badge-agency">🏢 CTOs e tech leads</span>
+          <span class="badge badge-sponsor">🎤 Patrocinador/Palestrante</span>
+          <a class="card-link" href="https://thedevconf.com/tdc/2026/florianopolis" target="_blank">thedevconf.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">TDC Summit São Paulo 2026</div>
+          <div class="card-date">Mai–Jun 2026 (est.)</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-why">
+          🎯 Edição especial "Summit" do TDC em SP com foco em liderança técnica e IA — audiência de C-levels e heads de engenharia de grandes empresas. Formato mais executivo que o TDC regular.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">~R$800–1.500</span>
+          <span class="badge badge-agency">🏢 C-levels / Heads</span>
+          <span class="badge badge-sponsor">🎪 Patrocínio disponível</span>
+          <a class="card-link" href="https://thedevconf.com/tdc/2026/" target="_blank">thedevconf.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">CASE 2026 — Conferência Anual de Startups e Empreendedorismo</div>
+          <div class="card-date">Nov 2026 (est.)</div>
+        </div>
+        <div class="card-location">📍 Vila Olímpia, São Paulo, SP</div>
+        <div class="card-why">
+          🎯 O principal evento do ecossistema de startups no Brasil (12ª edição) — reúne fundadores, investidores e corporações. Palestrantes são founders que passaram de R$100M em faturamento. Opção de <strong>patrocínio/expositor</strong> com excelente ROI para serviços tech.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">~R$500–800</span>
+          <span class="badge badge-saas">🚀 Founders BR</span>
+          <span class="badge badge-exhibit">🎪 Expositor disponível</span>
+          <a class="card-link" href="https://abstartups.com.br/case2025/" target="_blank">abstartups.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">RD Summit 2026</div>
+          <div class="card-date">Nov 2026 (est.)</div>
+        </div>
+        <div class="card-location">📍 Florianópolis, SC</div>
+        <div class="card-why">
+          🎯 O maior evento de marketing e vendas da América Latina (TOTVS/RD Station) — público de gerentes de marketing, diretores comerciais e fundadores de PMEs que são clientes ideais para agência e SaaS B2B.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">~R$1.000–2.000</span>
+          <span class="badge badge-agency">🏢 Clientes B2B</span>
+          <span class="badge badge-saas">🚀 SaaS vendas/mkt</span>
+          <a class="card-link" href="https://rdsummit.rdstation.com/" target="_blank">rdsummit.rdstation.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Startup Summit Florianópolis 2026</div>
+          <div class="card-date">Set–Out 2026 (est.)</div>
+        </div>
+        <div class="card-location">📍 Florianópolis, SC</div>
+        <div class="card-why">
+          🎯 Hub do ecossistema de inovação do Sul do Brasil — excelente para conhecer founders da região Sul, que têm perfil PME-tech (potenciais clientes para dev services e SaaS).
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">~R$300–600</span>
+          <span class="badge badge-saas">🚀 Startups Sul</span>
+          <span class="badge badge-network">🤝 Ecosystem</span>
+          <a class="card-link" href="https://startupsummit.com.br" target="_blank">startupsummit.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Campus Party Brasil 2027</div>
+          <div class="card-date">Jan–Fev 2027 (est.)</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-why">
+          🎯 Evento de inovação e tech com público amplo — bom para visibilidade de marca (WeDevUp) e recrutamento de devs. Acesso a espaços de exposição para startups e agências.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-low">~R$200–500</span>
+          <span class="badge badge-network">🌐 Amplo público</span>
+          <span class="badge badge-exhibit">🎪 Expo disponível</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 3: CROSS/NETWORKING ══════════ -->
+  <div id="tab-cross" class="tab-pane">
+    <div class="section-intro">
+      <strong>Eventos estratégicos para vender e fechar clientes</strong> — foco em founders, decisores, B2B tech, produto e marketing. A seleção mais importante para Juan.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">CASE Abstartups — Espaço Expositor/Patrocinador</div>
+          <div class="card-date">Nov 2026 · São Paulo</div>
+        </div>
+        <div class="card-location">📍 Vila Olímpia, São Paulo</div>
+        <div class="card-why">
+          🎯 <strong>Melhor ROI para vender serviços de agência no Brasil.</strong> Patrocinar/expor no CASE coloca a WeDevUp na frente de 5.000+ founders e líderes de startups que precisam de desenvolvimento. Também abre porta para o Startup Awards — aparição de marca de alto impacto.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">~R$5k–20k (patrocínio)</span>
+          <span class="badge badge-exhibit">🎪 Stand/exposição</span>
+          <span class="badge badge-saas">🚀 Vender SaaS</span>
+          <span class="badge badge-agency">🏢 Vender dev services</span>
+          <a class="card-link" href="https://abstartups.com.br" target="_blank">abstartups.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">RD Summit — Maior Evento de Marketing e Vendas LatAm</div>
+          <div class="card-date">Nov 2026 · Florianópolis</div>
+        </div>
+        <div class="card-location">📍 Florianópolis, SC</div>
+        <div class="card-why">
+          🎯 <strong>Melhor evento para encontrar clientes PME com orçamento de marketing.</strong> Público: gerentes de marketing, fundadores de e-commerce e SaaS B2B. Quem usa RD Station está crescendo e frequentemente precisa de dev para integrações e automações.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">~R$1.000–2.000</span>
+          <span class="badge badge-agency">🏢 PME com budget</span>
+          <span class="badge badge-saas">🚀 Integrações SaaS</span>
+          <a class="card-link" href="https://rdsummit.rdstation.com/" target="_blank">rdsummit.rdstation.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Web Summit Rio — Startup Exhibitor Program</div>
+          <div class="card-date">8–11 Jun 2026 · Rio de Janeiro</div>
+        </div>
+        <div class="card-location">📍 Riocentro, Rio de Janeiro</div>
+        <div class="card-why">
+          🎯 Cadastrar a WeDevUp (ou um SaaS) no <strong>Startup Exhibitor</strong> do Web Summit Rio dá acesso a 30.000 participantes e 600 investidores a um custo muito menor que o stand regular. Ideal para lançar um produto SaaS ou gerar leads qualificados de enterprise.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">~R$2k–8k (startup package)</span>
+          <span class="badge badge-exhibit">🎪 Startup Exhibitor</span>
+          <span class="badge badge-investors">💰 600+ investidores</span>
+          <a class="card-link" href="https://rio.websummit.com/startups/" target="_blank">websummit → startups</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Encontros Mensais — SP Startup Founder 101</div>
+          <div class="card-date">Mensal · São Paulo / Online</div>
+        </div>
+        <div class="card-location">📍 São Paulo (presencial e online)</div>
+        <div class="card-why">
+          🎯 Fundadores em early-stage que ainda não contrataram um dev shop — o momento certo para apresentar a WeDevUp. Frequência mensal permite construir relacionamentos consistentes, não apenas trocar cartão.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-agency">🏢 Early-stage founders</span>
+          <span class="badge badge-network">🤝 Relacionamento</span>
+          <a class="card-link" href="https://www.meetup.com/sao-paulo-startup-founder-101/" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">B2B Brazil Summit 2026</div>
+          <div class="card-date">Abr–Jun 2026 (est.)</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-why">
+          🎯 Conferência focada em vendas B2B complexas no Brasil — diretores comerciais, RevOps e founders de SaaS B2B. Público com orçamento e decisão de compra para contratar agências e ferramentas.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">~R$800–1.500</span>
+          <span class="badge badge-saas">🚀 SaaS B2B</span>
+          <span class="badge badge-agency">🏢 Diretores comerciais</span>
+          <a class="card-link" href="https://b2bbrazil.com.br" target="_blank">b2bbrazil.com.br →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Product Managers SP — Meetups PLG & SaaS</div>
+          <div class="card-date">Mensal · São Paulo</div>
+        </div>
+        <div class="card-location">📍 São Paulo, SP</div>
+        <div class="card-why">
+          🎯 Product Managers e Product Owners de empresas tech — profissionais que influenciam decisões de terceirização de dev. Eventos de Product-Led Growth e SaaS metrics são especialmente relevantes.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-agency">🏢 PMs decisores</span>
+          <span class="badge badge-saas">🚀 PLG / SaaS</span>
+          <a class="card-link" href="https://www.meetup.com/find/?location=São Paulo&keywords=product+manager" target="_blank">meetup.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Abstartups Community — Eventos Exclusivos de Membros</div>
+          <div class="card-date">Ao longo do ano · SP e online</div>
+        </div>
+        <div class="card-location">📍 São Paulo / Online</div>
+        <div class="card-why">
+          🎯 Sendo membro da Abstartups (a partir de R$12/mês), Juan tem acesso a eventos exclusivos de networking com founders e investidores + lista de startups associadas para prospecção direta. Custo-benefício excepcional para geração de leads.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">R$12–247/mês</span>
+          <span class="badge badge-saas">🚀 1.000+ startups</span>
+          <span class="badge badge-network">🤝 Acesso contínuo</span>
+          <a class="card-link" href="https://abstartups.com.br" target="_blank">abstartups.com.br →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ TAB 4: GLOBAL ══════════ -->
+  <div id="tab-global" class="tab-pane">
+    <div class="section-intro">
+      <strong>Conferências internacionais</strong> que justificam uma viagem — para quando Juan quiser levar a WeDevUp ou um produto SaaS para o mercado global.
+    </div>
+    <div class="events-grid">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">SaaStr Annual 2026</div>
+          <div class="card-date">Ago 2026 (est.)</div>
+        </div>
+        <div class="card-location">📍 San Mateo, California, EUA</div>
+        <div class="card-why">
+          🎯 <strong>A conferência mais importante para founders de SaaS no mundo.</strong> 12.000+ participantes, todos são founders/líderes de SaaS companies. Ideal para validar produto, encontrar co-founders, VCs e potenciais clientes globais.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">~USD 1.500–2.500</span>
+          <span class="badge badge-saas">🚀 SaaS founders</span>
+          <span class="badge badge-investors">💰 VCs globais</span>
+          <a class="card-link" href="https://www.saastr.com/events/" target="_blank">saastr.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Web Summit Lisboa 2026</div>
+          <div class="card-date">Nov 2026</div>
+        </div>
+        <div class="card-location">📍 Lisboa, Portugal</div>
+        <div class="card-why">
+          🎯 A maior conferência de tecnologia do mundo (70.000+ participantes) — vantagem de idioma e proximidade cultural para brasileiros. Excelente para conectar com fundos europeus e escalar um SaaS para o mercado europeu. Programa <strong>ALPHA</strong> para startups early-stage.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">~EUR 1.000–2.000</span>
+          <span class="badge badge-investors">💰 Fundos EU</span>
+          <span class="badge badge-saas">🚀 Mercado europeu</span>
+          <span class="badge badge-exhibit">🎪 Startup ALPHA</span>
+          <a class="card-link" href="https://websummit.com" target="_blank">websummit.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Collision Conference 2026</div>
+          <div class="card-date">Jun 2026</div>
+        </div>
+        <div class="card-location">📍 Toronto, Canadá</div>
+        <div class="card-why">
+          🎯 A maior conferência de startups da América do Norte — 40.000+ participantes, 1.000+ investidores. Programa <strong>STARTUP</strong> permite participar como expositor a custo reduzido. Mais acessível que o Vale do Silício para networking americano.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">~USD 1.000–2.000</span>
+          <span class="badge badge-investors">💰 1.000+ VCs</span>
+          <span class="badge badge-exhibit">🎪 Startup package</span>
+          <a class="card-link" href="https://collisionconf.com" target="_blank">collisionconf.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">SXSW 2026</div>
+          <div class="card-date">Mar 2026</div>
+        </div>
+        <div class="card-location">📍 Austin, Texas, EUA</div>
+        <div class="card-why">
+          🎯 Interseção de tech, negócios e cultura criativa — ideal para quem quer posicionar um SaaS com diferencial criativo. Excelente para networking com startup founders americanos e líderes de produto de empresas tech.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-high">~USD 1.500–2.500</span>
+          <span class="badge badge-saas">🚀 Tech + Criativo</span>
+          <span class="badge badge-network">🌐 Founders EUA</span>
+          <a class="card-link" href="https://www.sxsw.com" target="_blank">sxsw.com →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Latam Founders Summit 2026</div>
+          <div class="card-date">Ao longo do ano (est.)</div>
+        </div>
+        <div class="card-location">📍 Miami / São Paulo / Online</div>
+        <div class="card-why">
+          🎯 Conferências para founders latinos que constroem para o mercado americano — bridge entre Brasil e EUA. Comunidade de empreendedores que frequentemente precisam de desenvolvimento e validam produtos com dev shops brasileiros.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-mid">~USD 300–800</span>
+          <span class="badge badge-saas">🚀 Founders LatAm</span>
+          <span class="badge badge-agency">🏢 Dev services</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Product Hunt Global Meetups 2026</div>
+          <div class="card-date">Ao longo do ano</div>
+        </div>
+        <div class="card-location">📍 Online / São Paulo / Global</div>
+        <div class="card-why">
+          🎯 Comunidade de makers e indie hackers — perfeito para lançar um produto SaaS e receber feedback de early adopters. Product Hunt tem meetups presenciais em SP esporadicamente.
+        </div>
+        <div class="card-footer">
+          <span class="price-badge price-free">Gratuito</span>
+          <span class="badge badge-saas">🚀 Indie hackers</span>
+          <span class="badge badge-network">🌐 Global makers</span>
+          <a class="card-link" href="https://www.producthunt.com/events" target="_blank">producthunt.com →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Curado para Juan (WeDevUp) · Atualizado fev/2026 · 
+  <a href="https://jcouso.github.io/ai-alpha-hub/" style="color:#6c63ff">ai-alpha-hub</a>
+</footer>
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      btns.forEach(b => b.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
