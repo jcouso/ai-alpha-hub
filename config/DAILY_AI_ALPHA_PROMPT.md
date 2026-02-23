@@ -139,7 +139,7 @@ BEFORE writing, re-read the RSS data you saved earlier:
 ```
 cat /tmp/ai-alpha-rss.txt
 ```
-The 📺 YouTube Picks section MUST use real videos from this file. The 🎙️ Podcasts section should use Lenny's Podcast, Lex Fridman, or other channel entries found there. Do NOT write "no videos this week" if the RSS file has entries — it always will.
+The 📺 Video of the Day section MUST use a real video from this file. The 🎙️ Podcasts section MUST use Lenny's Podcast, Lex Fridman, Dwarkesh Patel, or other channel entries found there. BOTH sections are mandatory — never skip them. Do NOT write "no videos" if the RSS file has entries — it always will.
 
 
 Take the APPROVED signals and NARRATIVE ANALYSIS and:
@@ -157,8 +157,8 @@ REPORT SECTIONS:
 - 🧪 Research Frontier (new technical papers, fresh research, and emerging community ideas with practical alpha angle)
 - 🎬 Video & Image AI
 - 🤖 New Models & Benchmarks (VERIFIED ONLY)
-- 🎙️ Podcasts Worth Your Time (3-5, verified episode links, last 14 days — NEVER include youtube.com/shorts links, clips under 10 minutes, or channel homepage links; only full episodes with direct URLs)
-- 📺 YouTube Picks (1-3 specific videos from top community coders — tutorials, coding demos, workflow walkthroughs; skip news roundups; skip if nothing great dropped this week — conditional section)
+- 🎙️ Podcasts Worth Your Time (1-3 episodes, verified links, last 14 days — **MANDATORY, never skip this section**. Use Lex Fridman, Lenny's Podcast, Dwarkesh Patel, or other tracked channels. NEVER include youtube.com/shorts links, clips under 10 minutes, or channel homepage links; only full episodes with direct URLs. If no new episodes in 24h, pick the best from last 14 days.)
+- 📺 Video of the Day (1 specific video from top community coders — **MANDATORY, never skip this section**. Tutorials, coding demos, workflow walkthroughs. Pick the single best drop from last 24-48h. Use real YouTube URLs from the RSS file.)
 - 🧑‍💻 Coding Tips (practical)
 - ⚙️ Workflow Upgrades
 - 🎯 Action Pack (top 5 experiments for today)
