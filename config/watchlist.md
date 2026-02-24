@@ -136,6 +136,11 @@ UCNJ1Ymd5yFuUPtn21xtRbbw | AI Explained
 UCcefcZRL2oaA_uBNeo5UOWg | Y Combinator
 UCSHZKyawb77ixDdsGog4iWA | Lex Fridman
 UC6t1O76G0jYXOAoYCm153dA | Lenny's Podcast
+UCd8q0XxI8sZ3Wr3GMHNFXcg | Dwarkesh Patel
+UCNIkB2IeJ-6AmZv7bDIf7Xw | TWIML AI Podcast
+UCZHmQk67mSJgfCCTn7xBfew | The Gradient
+UCuXy5tCgEninup9cGplbiFw | a16z
+UCVHkMnMGHHZb6KiKtNekFmw | Latent Space Podcast
 ```
 
 ## How to update
