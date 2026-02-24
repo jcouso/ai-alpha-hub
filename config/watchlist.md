@@ -78,11 +78,12 @@ Only flag a video if it's genuinely educational/practical — not just news/comm
 - https://www.youtube.com/@lexfridman — Lex (long-form, researchers)
 - https://www.youtube.com/@LennysPodcast — Lenny (product + AI)
 
-### Criteria for including a video:
-- Must be uploaded in the last 7 days
-- Must have a clear practical/technical angle (tutorial, demo, workflow, code walkthrough)
-- Prefer: live coding sessions, "how I use X" from practitioners, tool demos
-- Avoid: AI news roundups, hype videos, generic explainers anyone would find on their own
+### Criteria for including a video (YouTube Picks — 3-5 per day):
+- Window: last 48h preferred, up to 7 days if needed to fill 3-5 slots
+- Topics: AI coding, agent workflows, tool demos, speech/audio AI, ML research breakdowns, SaaS dev, tech infrastructure, software engineering
+- Prefer: live coding sessions, "how I use X" from practitioners, tutorial walkthroughs, research demos
+- Avoid: pure news roundups, repetitive hype with no practical angle
+- Goal: a reader should come away knowing how to DO something new
 
 ## Google News RSS Queries
 The fetch-rss.sh script auto-derives queries from tool/company names above,
@@ -127,7 +128,7 @@ Format: ChannelID | Display Name
 
 ```
 UCXUPKJO5MZQN11PqgIvyuvQ | Andrej Karpathy
-UCwgKmJM4ZJQRJ-U5NjvR2dg | George Hotz (geohotarchive)
+UCwgKmJM4ZJQRJ-U5NjvR2dg | George Hotz
 UC8ENHE5xdFSwx71u3fDH5Xw | ThePrimeagen
 UCbRP3c757lWg9M-U7TyEkXA | Theo (t3.gg)
 UCsBjURrPoezykLs9EqgamOA | Fireship
@@ -138,9 +139,19 @@ UCSHZKyawb77ixDdsGog4iWA | Lex Fridman
 UC6t1O76G0jYXOAoYCm153dA | Lenny's Podcast
 UCd8q0XxI8sZ3Wr3GMHNFXcg | Dwarkesh Patel
 UCNIkB2IeJ-6AmZv7bDIf7Xw | TWIML AI Podcast
-UCZHmQk67mSJgfCCTn7xBfew | The Gradient
+UCZHmQk67mSJgfCCTn7xBfew | The Gradient / Yannic Kilcher
 UCuXy5tCgEninup9cGplbiFw | a16z
 UCVHkMnMGHHZb6KiKtNekFmw | Latent Space Podcast
+UCbfYPyITQ-7l4upoX8nvctg | Two Minute Papers
+UCYO_jab_esuFRV4b17AJtAw | 3Blue1Brown
+UCo8bcnLyZH8tBIH9V1mLgqQ | Matt Berman (AI tools/demos)
+UC6vRUjYqDuoUsYsku86Lrsw | Jack Herrington (React/Next.js)
+UCFbNIlppjAuEX4znoulh0Cw | Web Dev Cody
+UCQSdcffGmXjjGNFntxEhcVg | Sam Witteveen (LangChain/agents)
+UCyIe-61Y8C4_o-zZCtO4ETQ | AssemblyAI (speech AI)
+UC5iAxi0EohtBGMEYBMKoRkQ | AI Insiders / David Shapiro
+UCpOlOeQMZpB0EZ2LiiKTmAA | Matthew Berman (AI news)
+UCHnyfMqiRRG1u-2MsSQLbXA | Veritasium (science/tech)
 ```
 
 ## How to update

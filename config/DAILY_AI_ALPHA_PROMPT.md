@@ -146,7 +146,7 @@ cat /tmp/ai-alpha-podcasts.txt   # podcasts + recent episodes (7 days)
 
 **FOR 🎙️ PODCASTS**: Use `/tmp/ai-alpha-podcasts.txt` (7-day window). Find the best episode from Lex Fridman, Lenny's Podcast, Dwarkesh Patel, Latent Space, TWIML, The Gradient, a16z, or any tracked channel. Pick the ONE episode most relevant to Juan's week (SaaS dev, coding agents, AI tools). Write a personal recommendation angle: WHY this specific episode matters THIS week given what's in the news. If zero episodes found in RSS data, recommend from known AI podcast circuit and link to their latest episode page.
 
-**FOR 📺 VIDEO OF THE DAY**: Use `/tmp/ai-alpha-rss.txt` (26h window). Pick the single most practical video — tutorial, live coding, tool demo, workflow walkthrough. Must be a direct YouTube URL, not a channel homepage.
+**FOR 📺 YOUTUBE PICKS**: Use BOTH `/tmp/ai-alpha-rss.txt` (26h) AND `/tmp/ai-alpha-podcasts.txt` (7 days) to find 3-5 videos. Curate a learning list across: AI coding demos, agent workflows, tool tutorials, speech/audio AI, ML research breakdowns, SaaS dev, and any tech that dropped in the last 48h. Prioritize: practical > news roundup. Include a 1-line "what you'll learn" for each. Direct YouTube URLs only — never channel homepages or shorts.
 
 BOTH sections are **mandatory and non-negotiable** — they must appear in every report, every day. No exceptions.
 
@@ -167,7 +167,7 @@ REPORT SECTIONS:
 - 🎬 Video & Image AI
 - 🤖 New Models & Benchmarks (VERIFIED ONLY)
 - 🎙️ Recommended Listen — **MANDATORY**. 1 episode pick from the last 7 days (use `/tmp/ai-alpha-podcasts.txt`). Channels: Lex Fridman, Lenny's Podcast, Dwarkesh Patel, Latent Space, TWIML, The Gradient, a16z, or any tracked channel. Include: episode title, direct URL, 2-line "why this week" explanation connecting it to what's in the news. NEVER link to channel homepage — always a specific episode URL. NEVER shorts or clips under 20 min.
-- 📺 Video of the Day — **MANDATORY**. 1 video from the last 24-48h (use `/tmp/ai-alpha-rss.txt`). Must be a tutorial, coding demo, or workflow walkthrough from a practitioner channel. Direct YouTube URL only. Include: what you'll learn from it in 1 line.
+- 📺 YouTube Picks — **MANDATORY, always 3-5 videos**. Curated learning list from the last 48h-7days. Cover at least 2 of these categories: AI coding/agents, tool demos, ML research, speech/audio AI, SaaS dev, tech infrastructure. Format each as: `**[Title]** — [what you'll learn in 1 line]` + direct YouTube URL. Draw from `/tmp/ai-alpha-rss.txt` + `/tmp/ai-alpha-podcasts.txt`. Never link channel homepages or shorts.
 - 🧑‍💻 Coding Tips — **MANDATORY, never skip. Include 1-2 actual code examples** (bash, Python, TypeScript, or prompt templates). Real runnable snippets — not just descriptions. Tied to what's in the news that day (e.g. if Cursor released sandboxing, show a config snippet; if a new model API dropped, show a curl call). If no hot new tool: pick the most useful practical trick from the week.
 - ⚙️ Workflow Upgrades (1-2 concrete workflow improvements a builder can apply today — "add X to your CLAUDE.md", "pipe Y into Z", etc.)
 - 🎯 Action Pack (top 3-5 experiments for today, each with a concrete first step)
@@ -197,7 +197,7 @@ Max 12 lines:
 - 🎬 [Video AI pick if any]
 - 🤖 [Model release — VERIFIED ONLY]
 - 🎙️ [Podcast: episode title — why this week]
-- 📺 [Video: what you'll learn]
+- 📺 YouTube: [best pick title — what you'll learn] + [link]
 - 🧑‍💻 Tip: [one practical tip]
 - 🔗 Full report: https://jcouso.github.io/ai-alpha-hub/?date=YYYY-MM-DD
 
