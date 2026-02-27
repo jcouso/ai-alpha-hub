@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-02-27",
+    "title": "1) Apple releases Xcode 26.3 with agentic coding support",
+    "path": "./reports/2026-02-27.md"
+  },
+  {
     "date": "2026-02-26",
     "title": "1) GitHub rolled out GPT-5.3-Codex across major developer surfaces",
     "path": "./reports/2026-02-26.md"

@@ -1,0 +1,61 @@
+🔥 *Daily AI Alpha — Fri, Feb 27 (09:10 BRT)*
+
+*Top alpha (24h, verified)*
+1) GitHub opened *Claude + Codex* to Copilot Business/Pro  
+https://github.blog/changelog/2026-02-26-claude-and-codex-now-available-for-copilot-business-pro-users
+
+2) GitHub Copilot coding agent shipped a real upgrade: model picker, self-review, built-in security scan, custom agents, CLI handoff  
+https://github.blog/ai-and-ml/github-copilot/whats-new-with-github-copilot-coding-agent/
+
+3) GitHub Enterprise AI Controls + agent control plane is now GA  
+https://github.blog/changelog/2026-02-26-enterprise-ai-controls-agent-control-plane-now-generally-available
+
+4) OpenAI + Figma launched Codex roundtrip (code ↔ design via MCP)  
+https://openai.com/index/figma-partnership/
+
+5) Google launched *Nano Banana 2* (Gemini 3.1 Flash Image) + dev rollout  
+https://blog.google/innovation-and-ai/technology/ai/nano-banana-2/  
+https://blog.google/innovation-and-ai/technology/developers-tools/build-with-nano-banana-2/
+
+6) Anthropic published an official DoW safeguards statement (important policy signal)  
+https://www.anthropic.com/news/statement-department-of-war
+
+---
+*Research Frontier* 🔬
+- No major new frontier paper in strict 24h from tracked official lab channels.
+- But two high-signal frontier shifts:
+  - *Roundtrip code↔design* is becoming real product infra (OpenAI+Figma MCP).
+  - *Agent self-critique loops* are becoming mainstream (GitHub coding agent self-review), which changes how we should eval agent quality.
+
+---
+*What this means (straight)*
+- Distribution + integration is beating raw model hype.
+- If your stack is GitHub-first, this is a good week to operationalize multi-agent workflows.
+- Governance (policies/auditability) is now mandatory, not “later.”
+
+---
+*Recommended listen* 🎧
+- Lenny’s Podcast — Jeetu Patel (Cisco):  
+https://www.youtube.com/watch?v=ylNKlBlkFas
+- Bonus: YC — The AI Agent Economy Is Here  
+https://www.youtube.com/watch?v=Q8wVMdwhlh4
+
+---
+*YouTube picks* 📺
+- Theo — What if Claude had a gun?  
+https://www.youtube.com/watch?v=MWFyApldYDA
+- Fireship — When open-sourcing your code goes wrong  
+https://www.youtube.com/watch?v=wzzh7Not8XE
+- Web Dev Cody — JavaScript Is Dead  
+https://www.youtube.com/watch?v=Sh5B7ApPh7k
+- Developers Digest — Mercury 2 reasoning diffusion model  
+https://www.youtube.com/watch?v=quOe8V2n9rU
+- Jack Herrington — WebMCP for SPAs  
+https://www.youtube.com/watch?v=IAfrzel524s
+
+---
+*Today’s action pack* ⚙️
+1) Run one real issue as *Claude vs Codex* duel in GitHub.
+2) Lock `.github/copilot-instructions.md` before broader rollout.
+3) Test one Codex↔Figma feature loop and track cycle-time delta.
+4) Trial Nano Banana 2 for one production creative asset path.
