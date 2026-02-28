@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-02-28",
+    "title": "1) Claude + Codex now available for Copilot Business & Pro",
+    "path": "./reports/2026-02-28.md"
+  },
+  {
     "date": "2026-02-27",
     "title": "1) Apple releases Xcode 26.3 with agentic coding support",
     "path": "./reports/2026-02-27.md"
