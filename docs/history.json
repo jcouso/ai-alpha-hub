@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-03-01",
+    "title": "1) Anthropic blacklisted, Claude hits #1 on App Store",
+    "path": "./reports/2026-03-01.md"
+  },
+  {
     "date": "2026-02-28",
     "title": "1) Claude + Codex now available for Copilot Business & Pro",
     "path": "./reports/2026-02-28.md"
