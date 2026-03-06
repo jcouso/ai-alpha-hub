@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-03-06",
+    "title": "1) GPT-5.4 \u2014 OpenAI's New Frontier Model",
+    "path": "./reports/2026-03-06.md"
+  },
+  {
     "date": "2026-03-05",
     "title": "1) GitHub added Grok Code Fast 1 to Copilot Free auto model selection",
     "path": "./reports/2026-03-05.md"
