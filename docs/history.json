@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-03-08",
+    "title": "1) OpenAI Robotics Head Resigns Over Pentagon Deal",
+    "path": "./reports/2026-03-08.md"
+  },
+  {
     "date": "2026-03-07",
     "title": "1) Anthropic \u00d7 Mozilla: Claude Finds 22 CVEs in Firefox",
     "path": "./reports/2026-03-07.md"
