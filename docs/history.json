@@ -1,17 +1,22 @@
 [
   {
+    "date": "2026-03-09",
+    "title": "1) Agent Safehouse explodes on HN (622pts)",
+    "path": "./reports/2026-03-09.md"
+  },
+  {
     "date": "2026-03-08",
     "title": "1) OpenAI Robotics Head Resigns Over Pentagon Deal",
     "path": "./reports/2026-03-08.md"
   },
   {
     "date": "2026-03-07",
-    "title": "1) Anthropic \u00d7 Mozilla: Claude Finds 22 CVEs in Firefox",
+    "title": "1) Anthropic × Mozilla: Claude Finds 22 CVEs in Firefox",
     "path": "./reports/2026-03-07.md"
   },
   {
     "date": "2026-03-06",
-    "title": "1) GPT-5.4 \u2014 OpenAI's New Frontier Model",
+    "title": "1) GPT-5.4 — OpenAI's New Frontier Model",
     "path": "./reports/2026-03-06.md"
   },
   {
@@ -51,12 +56,12 @@
   },
   {
     "date": "2026-02-24",
-    "title": "1. Superpowers \u2014 Agentic Skills Framework Hits 60K Stars",
+    "title": "1. Superpowers — Agentic Skills Framework Hits 60K Stars",
     "path": "./reports/2026-02-24.md"
   },
   {
     "date": "2026-02-23",
-    "title": "Ladybird Browser Adopts Rust \u2014 AI Did the Heavy Lifting",
+    "title": "Ladybird Browser Adopts Rust — AI Did the Heavy Lifting",
     "path": "./reports/2026-02-23.md"
   },
   {
@@ -66,37 +71,37 @@
   },
   {
     "date": "2026-02-21",
-    "title": "\ud83d\udea8 Claude Code Security Launches + Karpathy Coins 'Claws' + Kiro AI Causes 13h AWS Outage + Cord Agent Trees + Hassabis Memory Famine Warning",
+    "title": "🚨 Claude Code Security Launches + Karpathy Coins 'Claws' + Kiro AI Causes 13h AWS Outage + Cord Agent Trees + Hassabis Memory Famine Warning",
     "path": "./reports/2026-02-21.md"
   },
   {
     "date": "2026-02-20",
-    "title": "\ud83d\udd25 ggml.ai Joins Hugging Face + Gemini 3.1 Pro (77% ARC-AGI-2) + Stripe Minions 1300 PRs/Week + Semantic Kernel CVSS 9.9 + Claude PowerPoint \u2192 Pro + GitHub Actions Run IDs",
+    "title": "🔥 ggml.ai Joins Hugging Face + Gemini 3.1 Pro (77% ARC-AGI-2) + Stripe Minions 1300 PRs/Week + Semantic Kernel CVSS 9.9 + Claude PowerPoint → Pro + GitHub Actions Run IDs",
     "path": "./reports/2026-02-20.md"
   },
   {
     "date": "2026-02-19",
-    "title": "\ud83d\udea8 Anthropic Blocks Claude Max OAuth + Pentagon Supply Chain Threat + Sony Joins Seedance Pile-On + EVMbench + Copilot Gets Opus 4.6",
+    "title": "🚨 Anthropic Blocks Claude Max OAuth + Pentagon Supply Chain Threat + Sony Joins Seedance Pile-On + EVMbench + Copilot Gets Opus 4.6",
     "path": "./reports/2026-02-19.md"
   },
   {
     "date": "2026-02-18",
-    "title": "\ud83d\udd25 Claude Sonnet 4.6 Drops + OpenClaw Security Meltdown + AI Agent Writes Hit Piece + SkillsBench + GitHub Agentic Workflows Preview",
+    "title": "🔥 Claude Sonnet 4.6 Drops + OpenClaw Security Meltdown + AI Agent Writes Hit Piece + SkillsBench + GitHub Agentic Workflows Preview",
     "path": "./reports/2026-02-18.md"
   },
   {
     "date": "2026-02-17",
-    "title": "\ud83d\udd25 Qwen 3.5 Open Weights + Pentagon vs Anthropic + AGENTS.md Hurts Agents + GitHub Eternal September + Disney vs Seedance",
+    "title": "🔥 Qwen 3.5 Open Weights + Pentagon vs Anthropic + AGENTS.md Hurts Agents + GitHub Eternal September + Disney vs Seedance",
     "path": "./reports/2026-02-17.md"
   },
   {
     "date": "2026-02-16",
-    "title": "\ud83d\ude80 GitHub Agentic Workflows + WebMCP + OpenClaw Foundation + Cerebras Production + Video AI 4K",
+    "title": "🚀 GitHub Agentic Workflows + WebMCP + OpenClaw Foundation + Cerebras Production + Video AI 4K",
     "path": "./reports/2026-02-16.md"
   },
   {
     "date": "2026-02-15",
-    "title": "\ud83d\udd25 OpenClaw Creator Joins OpenAI + GPT-4o Retired + Disney vs Seedance + Anthropic $30B + Agent Teams",
+    "title": "🔥 OpenClaw Creator Joins OpenAI + GPT-4o Retired + Disney vs Seedance + Anthropic $30B + Agent Teams",
     "path": "./reports/2026-02-15.md"
   },
   {
