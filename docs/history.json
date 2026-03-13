@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-03-13",
+    "title": "1) Adobe CEO Narayen Steps Down After 18 Years Amid AI Disruption",
+    "path": "./reports/2026-03-13.md"
+  },
+  {
+    "date": "2026-03-12",
+    "title": "Google Closes $32B Wiz Acquisition | Perplexity Personal Computer | NVIDIA Nemotron 3 Super",
+    "path": "./reports/2026-03-12.md"
+  },
+  {
+    "date": "2026-03-11",
+    "title": "Claude Code Outage Analysis | Coding Agent Security Report",
+    "path": "./reports/2026-03-11.md"
+  },
+  {
     "date": "2026-03-10",
     "title": "1) NVIDIA Planning Open-Source AI Agent Platform \"NemoClaw\"",
     "path": "./reports/2026-03-10.md"
