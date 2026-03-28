@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-03-28",
+    "title": "1. \ud83d\udea8 Claude Mythos Revealed in Anthropic Data Leak",
+    "path": "./reports/2026-03-28.md"
+  },
+  {
+    "date": "2026-03-26",
+    "title": "GitHub Copilot Trains on Your Code | Mistral Voxtral TTS | ARC-AGI-3 Launches",
+    "path": "./reports/2026-03-26.md"
+  },
+  {
     "date": "2026-03-25",
     "title": "1. OpenAI Kills Sora, Disney $1B Deal Dead",
     "path": "./reports/2026-03-25.md"
