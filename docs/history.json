@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-03-29",
+    "title": "GPT-5.4 Saturates USAMO 2026: 95% Score",
+    "path": "./reports/2026-03-29.md"
+  },
+  {
     "date": "2026-03-28",
     "title": "1. \ud83d\udea8 Claude Mythos Revealed in Anthropic Data Leak",
     "path": "./reports/2026-03-28.md"
