@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-04-16",
+    "title": "1. Anthropic Enterprise Shifts to Usage-Based Billing",
+    "path": "./reports/2026-04-16.md"
+  },
+  {
+    "date": "2026-04-14",
+    "title": "Stanford HAI 2026 AI Index | OpenAI 1B Users | Anthropic Managed Agents | Claude App Builder Leak | Copilot CLI MCP Install",
+    "path": "./reports/2026-04-14.md"
+  },
+  {
     "date": "2026-04-12",
     "title": "1. Paper: \"How We Broke Top AI Agent Benchmarks\" \u2014 HN #1 Today",
     "path": "./reports/2026-04-12.md"
