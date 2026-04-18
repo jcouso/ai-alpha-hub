@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-04-18",
+    "title": "1. Anthropic Launches Claude Design",
+    "path": "./reports/2026-04-18.md"
+  },
+  {
     "date": "2026-04-16",
     "title": "1. Anthropic Enterprise Shifts to Usage-Based Billing",
     "path": "./reports/2026-04-16.md"
