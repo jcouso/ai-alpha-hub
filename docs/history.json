@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-04-28",
+    "title": "1. Microsoft and OpenAI End Exclusive Partnership",
+    "path": "./reports/2026-04-28.md"
+  },
+  {
+    "date": "2026-04-26",
+    "title": "Google $40B Anthropic Investment | US State Dept DeepSeek Warning | Qwen3.6-27B | GitHub Copilot Token Billing | GPT-5.5 Bio Bug Bounty",
+    "path": "./reports/2026-04-26.md"
+  },
+  {
     "date": "2026-04-24",
     "title": "1. GPT-5.5 Officially Released",
     "path": "./reports/2026-04-24.md"
