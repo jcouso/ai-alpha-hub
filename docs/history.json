@@ -1,5 +1,20 @@
 [
   {
+    "date": "2026-05-12",
+    "title": "1. TanStack NPM Supply-Chain Compromise \u2014 Full Postmortem",
+    "path": "./reports/2026-05-12.md"
+  },
+  {
+    "date": "2026-05-08",
+    "title": "AI Alpha Report",
+    "path": "./reports/2026-05-08.md"
+  },
+  {
+    "date": "2026-05-10",
+    "title": "AI Alpha Report",
+    "path": "./reports/2026-05-10.md"
+  },
+  {
     "date": "2026-05-06",
     "title": "1. GPT-5.5 Instant Becomes ChatGPT Default",
     "path": "./reports/2026-05-06.md"
