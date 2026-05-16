@@ -1,18 +1,28 @@
 [
   {
+    "date": "2026-05-16",
+    "title": "1. Microsoft Cancels Internal Claude Code Licenses",
+    "path": "./reports/2026-05-16.md"
+  },
+  {
+    "date": "2026-05-14",
+    "title": "Claude for Small Business | Agent SDK Credits | GitHub Copilot REST API | TikTok MCP Server | Notion Developer Platform",
+    "path": "./reports/2026-05-14.md"
+  },
+  {
     "date": "2026-05-12",
     "title": "1. TanStack NPM Supply-Chain Compromise \u2014 Full Postmortem",
     "path": "./reports/2026-05-12.md"
   },
   {
-    "date": "2026-05-08",
-    "title": "AI Alpha Report",
-    "path": "./reports/2026-05-08.md"
-  },
-  {
     "date": "2026-05-10",
     "title": "AI Alpha Report",
     "path": "./reports/2026-05-10.md"
+  },
+  {
+    "date": "2026-05-08",
+    "title": "AI Alpha Report",
+    "path": "./reports/2026-05-08.md"
   },
   {
     "date": "2026-05-06",
@@ -141,12 +151,12 @@
   },
   {
     "date": "2026-03-25",
-    "title": "1. OpenAI Kills Sora, Disney $1B Deal Dead",
+    "title": "1) OpenAI Kills Sora, Disney $1B Deal Dead",
     "path": "./reports/2026-03-25.md"
   },
   {
     "date": "2026-03-24",
-    "title": "1. Claude Computer Use Ships on macOS",
+    "title": "1) Claude Computer Use Ships on macOS",
     "path": "./reports/2026-03-24.md"
   },
   {
