@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-05-18",
+    "title": "1. OpenAI Merges ChatGPT + Codex into Single Agentic Platform",
+    "path": "./reports/2026-05-18.md"
+  },
+  {
     "date": "2026-05-16",
     "title": "1. Microsoft Cancels Internal Claude Code Licenses",
     "path": "./reports/2026-05-16.md"
