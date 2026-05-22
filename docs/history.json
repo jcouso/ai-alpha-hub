@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-05-22",
+    "title": "1. GitHub Breached: 3,800 Internal Repos Exfiltrated via TanStack Supply Chain Attack",
+    "path": "./reports/2026-05-22.md"
+  },
+  {
     "date": "2026-05-20",
     "title": "1. Google I/O 2026: Gemini 3.5 Flash GA + Antigravity 2.0 + Spark + Omni",
     "path": "./reports/2026-05-20.md"
