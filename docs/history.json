@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-05-24",
+    "title": "1. DeepSeek V4-Pro: 75% Price Cut Made Permanent",
+    "path": "./reports/2026-05-24.md"
+  },
+  {
     "date": "2026-05-22",
     "title": "1. GitHub Breached: 3,800 Internal Repos Exfiltrated via TanStack Supply Chain Attack",
     "path": "./reports/2026-05-22.md"
