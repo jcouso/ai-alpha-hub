@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-06-11",
+    "title": "1. Anthropic Walks Back \"Secret Sabotage\" \u2014 Fable 5 Silently Degraded Researcher Output",
+    "path": "./reports/2026-06-11.md"
+  },
+  {
+    "date": "2026-06-09",
+    "title": "OpenAI IPO Filing | Apple WWDC Xcode 27 Agentic | NotebookLM Gemini 3.5 | Microsoft Packages Hacked",
+    "path": "./reports/2026-06-09.md"
+  },
+  {
+    "date": "2026-06-07",
+    "title": "AI Alpha Report",
+    "path": "./reports/2026-06-07.md"
+  },
+  {
+    "date": "2026-06-05",
+    "title": "AI Alpha Report",
+    "path": "./reports/2026-06-05.md"
+  },
+  {
     "date": "2026-06-03",
     "title": "1. Microsoft Scout \u2014 OpenClaw-Powered Always-On Agent",
     "path": "./reports/2026-06-03.md"
